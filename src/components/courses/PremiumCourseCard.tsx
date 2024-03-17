@@ -1,0 +1,46 @@
+import { cn } from '@/lib/utils'
+import { Course } from '@/types/Course'
+import React from 'react'
+import Typography from '../typography'
+import { Button } from '../ui/button'
+import { ArrowRight } from 'lucide-react'
+
+const PremiumCourseCard = ({
+    className,
+    course,
+    courseImage
+}: {
+    className?: string,
+    course: Course,
+    courseImage?: string
+}) => {
+  return (
+    <div className={cn([
+        'rounded-2xl relative w-full aspect-square shadow-2xl hover:shadow-none transition duration-300',
+        {
+            'bg-primary': course.appearence?.themeColor,
+            "text-primary-foreground": course.appearence?.forgroundColor
+        },
+        className
+    ])}
+    style={{
+        backgroundColor: course.appearence?.themeColor,
+        color: course.appearence?.forgroundColor
+    }}
+    >
+        <span className='inline-block w-14 h-14 top-0 right-0 absolute'><img className='w-full' src="/src/assets/284-2840858_100-job-guarantee-logo-hd-png-download.png" /></span>
+        <img className='absolute w-[70%] right-0 bottom-0 ' src={courseImage} />
+        <div className='absolute top-0 left-0 w-full h-full p-5'>
+            {
+                course.category.map(ct => {
+                    return <Typography as="lable" className={'tracking-wider uppercase text-xs'}>{ct}</Typography>
+                })
+            }
+            <Typography as="h2" className='text-3xl'>{course.title}</Typography>
+        </div>
+        <Button className='absolute left-5 bottom-5 bg-amber-500 hover:bg-amber-600 text-white'><span>ENROLL NOW</span><ArrowRight/></Button>
+    </div>
+  )
+}
+
+export default PremiumCourseCard
