@@ -48,12 +48,12 @@ const StatisticsSection = () => {
         <section className='grid lg:grid-cols-2 grid-cols-1 gap-5'>
             <div className='flex gap-5'>
                 <div className='flex items-center justify-center flex-col gap-5'>
-                    <RoudendPan image="/src/assets/New-Rectangle-2.webp" />
-                    <RoudendPan image="/src/assets/Vector-1.2.webp" />
+                    <RoudendPan image="/assets/images/New-Rectangle-2.webp" />
+                    <RoudendPan image="/assets/images/Vector-1.2.webp" />
                 </div>
                 <div className='flex flex-col gap-5'>
-                    <RoudendPan image="/src/assets/advanced-stress-anlysis-piping-system-sq.jpg" />
-                    <RoudendPan image="/src/assets/New-Rectangle-4.webp" />
+                    <RoudendPan image="/assets/images/advanced-stress-anlysis-piping-system-sq.jpg" />
+                    <RoudendPan image="/assets/images/New-Rectangle-4.webp" />
                 </div>
             </div>
 

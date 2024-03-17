@@ -20,12 +20,12 @@ const Hero = () => {
             <CarouselContent>
                 <CarouselItem>
                     <Parallax speed={-40}>
-                    <div className='min-h-screen' style={{ backgroundImage: 'url(src/assets/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    <div className='min-h-screen' style={{ backgroundImage: 'url(assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="px-6 text-center lg:text-left bg-transparent">
                             <div className="w-100 mx-auto pt-20">
                                 <div className="flex ">
                                     <div className="w-[40%]">
-                                        <img src="src/assets/hero-img-1.webp" className="w-full" alt="" />
+                                        <img src="/assets/images/hero-img-1.webp" className="w-full" alt="" />
                                     </div>
                                     <div className="flex items-center">
                                         <div className=" lg:mt-0 text-center  ">
@@ -40,7 +40,7 @@ const Hero = () => {
                                         </div>
                                     </div>
                                     <div className="w-[40%]">
-                                        <img src="src/assets/hero-img-2.webp" className="w-full" alt="" />
+                                        <img src="/assets/images/hero-img-2.webp" className="w-full" alt="" />
                                     </div>
                                 </div>
 
@@ -53,12 +53,12 @@ const Hero = () => {
                     </Parallax>
                 </CarouselItem>
                 <CarouselItem>
-                    <div className='min-h-screen' style={{ backgroundImage: 'url(src/assets/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    <div className='min-h-screen' style={{ backgroundImage: 'url(/assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="px-6 text-center lg:text-left bg-transparent">
                             <div className="w-100 mx-auto pt-20">
                                 <div className="flex ">
                                     <div className="w-[40%]">
-                                        <img src="src/assets/hero-img-1.webp" className="w-full" alt="" />
+                                        <img src="/assets/images/hero-img-1.webp" className="w-full" alt="" />
                                     </div>
                                     <div className="flex items-center">
                                         <div className=" lg:mt-0 text-center  ">
@@ -73,7 +73,7 @@ const Hero = () => {
                                         </div>
                                     </div>
                                     <div className="w-[40%]">
-                                        <img src="src/assets/hero-img-2.webp" className="w-full" alt="" />
+                                        <img src="/assets/images/hero-img-2.webp" className="w-full" alt="" />
                                     </div>
                                 </div>
 

@@ -7,7 +7,7 @@
 
   @font-face {
     font-family: "Giest";
-    src: url('src/assets/fonts/giest/GeistVariableVF.woff2') format('woff2');
+    src: url('/assets/images/fonts/giest/GeistVariableVF.woff2') format('woff2');
     font-style: normal;
     /* font-weight: 00; */
   }

@@ -27,7 +27,7 @@ const PremiumCourseCard = ({
         color: course.appearence?.forgroundColor
     }}
     >
-        <span className='inline-block w-14 h-14 top-0 right-0 absolute'><img className='w-full' src="/src/assets/284-2840858_100-job-guarantee-logo-hd-png-download.png" /></span>
+        <span className='inline-block w-14 h-14 top-0 right-0 absolute'><img className='w-full' src="/assets/images/284-2840858_100-job-guarantee-logo-hd-png-download.png" /></span>
         <img className='absolute w-[70%] right-0 bottom-0 ' src={courseImage} />
         <div className='absolute top-0 left-0 w-full h-full p-5'>
             {

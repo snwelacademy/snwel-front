@@ -50,7 +50,7 @@ const Testimonial = () => {
             </div>
 
             <div>
-                <img src="/src/assets/testimonial-2.png" alt="" />
+                <img src="/assets/images/testimonial-2.png" alt="" />
             </div>
         </div>
     </div>
