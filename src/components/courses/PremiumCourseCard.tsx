@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils'
-import { Course } from '@/types/Course'
-import React from 'react'
+import { Course } from '@/types/Course';
 import Typography from '../typography'
 import { Button } from '../ui/button'
 import { ArrowRight } from 'lucide-react'

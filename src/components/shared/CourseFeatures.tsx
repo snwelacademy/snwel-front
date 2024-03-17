@@ -1,5 +1,5 @@
 import { Dice5Icon, ListMinusIcon, NotebookIcon, Play, SettingsIcon, TangentIcon, User2Icon, ZapIcon } from 'lucide-react'
-import React, { ReactNode } from 'react'
+import  { ReactNode } from 'react'
 import SectionTitle from './SectionTitle'
 import HeadingSubtitle from './SectionLable'
 import { nanoid } from 'nanoid'

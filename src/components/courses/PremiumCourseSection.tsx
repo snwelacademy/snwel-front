@@ -1,4 +1,4 @@
-import React from 'react'
+
 import HeadingSubtitle from '../shared/SectionLable'
 import Typography from '../typography'
 import HighlightedText from '../typography/HighlightedHeading'
