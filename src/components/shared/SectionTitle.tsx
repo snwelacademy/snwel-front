@@ -16,7 +16,7 @@ const SectionTitle = ({
   return (
     <div className='mb-7'>
         <Typography as="title" className={cn([
-        ' relative inline-block z-20',
+        ' relative inline-block z-20 text-center',
         className
     ])}>
         {title}

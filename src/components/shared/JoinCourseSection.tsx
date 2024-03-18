@@ -31,7 +31,7 @@ const JoinCourseSection = () => {
                 </div>
             </div>
         </div>
-        <div>
+        <div className='mt-10 md:mt-0'>
             <JoinCourseForm/>
         </div>
     </div>

@@ -67,7 +67,7 @@ const StatisticsSection = () => {
                     Metus dictum at tempor commodo ullamcorper a lacus vestibulum. In hendrerit gravida rutrum quisque non tellus. Egestas sed sed risus pretium quam vulputate.
                 </Typography>
 
-                <div className='grid gap-5 grid-cols-2 mt-10 '>
+                <div className='grid gap-5 grid-cols-1 items-center md:grid-cols-2 mt-10 '>
                     {
                         content.map(ct => {
                             return <div key={nanoid()} className='flex gap-5 '>
@@ -75,7 +75,7 @@ const StatisticsSection = () => {
                                    <span> {ct.icon}</span>
                                 </div>
                                 <div>
-                                    <Typography as="h1" className={"font-bold mb-4 text-4xl text-primary"}>{ct.title}</Typography>
+                                    <Typography as="h1" className={"font-bold mb-4 text-3xl md:text-4xl text-primary"}>{ct.title}</Typography>
                                     <Typography as="lable" className='text-primary'>{ct.subtitle}</Typography>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const StatisticsSection = () => {
                 </div>
 
                 <div className='mt-5'>
-                    <Button size={'lg'}>Learn More</Button>
+                    <Button size={'lg'} className='w-full '>Learn More</Button>
                 </div>
             </div>
         </section>

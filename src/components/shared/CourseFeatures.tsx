@@ -59,7 +59,7 @@ const CourseFeatures = () => {
         <div className='container mx-auto px-4'>
         <HeadingSubtitle title="Our Course Features" className='text-primary before:bg-primary' />
         <SectionTitle>Unleash Your <HighlightedText>Engineering Potential</HighlightedText></SectionTitle>
-        <div className='grid grid-cols-4 gap-7 mt-16'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center  gap-7 mt-16'>
             {
                 content.map(ct => {
                     return <div key={nanoid()} className=' group bg-background border-2 border-primary/30 rounded-2xl p-3 hover:bg-primary hover:text-primary-foreground transition duration-300' >

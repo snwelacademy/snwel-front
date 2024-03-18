@@ -7,6 +7,17 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+    
+import { Flip } from "gsap/Flip";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(useGSAP,Flip,ScrollTrigger,Observer,ScrollToPlugin,TextPlugin);
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -88,7 +88,7 @@ const MainNavbar = () => {
         <Logo />
       </div>
 
-      <div className=''>
+      <div className='hidden md:block'>
         <NavigationMenu>
           <NavigationMenuList>
             {

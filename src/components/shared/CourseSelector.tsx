@@ -18,7 +18,7 @@ const CourseSelector = ({
     const courses = getAllCourses();
     return (
         <Select onValueChange={onChange} defaultValue={value}>
-            <SelectTrigger className="">
+            <SelectTrigger className="w-full">
                 <SelectValue placeholder="Choose Courses"/>
             </SelectTrigger>
             <SelectContent>

@@ -34,7 +34,7 @@ const JoinCourseForm = () => {
 
   return (
     <Form {...form} >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 rounded-2xl bg-primary/5 p-10">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 rounded-2xl bg-primary/5 p-4 md:p-10">
         <FormField
           control={form.control}
           name="name"

@@ -21,10 +21,10 @@ const content: { title: string, content: string }[] = [
 const HighlightPan = () => {
     return (
 
-        <Card className=' bg-primary-foreground rounded-2xl p-3 flex items-center justify-around  '>
+        <Card className=' bg-primary-foreground rounded-2xl p-3 flex items-center justify-around flex-col md:flex-row  '>
             {
                 content.map((item) => {
-                    return <div key={nanoid()} className='border-r border-primary w-full last:border-r-0 flex items-center justify-center h-32 pr-5 flex-col gap-3'>
+                    return <div key={nanoid()} className='border-t md:border-t-0 md:border-r border-primary w-full first:border-t-0  last:border-r-0 flex items-center justify-center h-32 pr-5 flex-col gap-3'>
                         <Typography as="h2" className='text-primary'>
                             {item.title}
                         </Typography>

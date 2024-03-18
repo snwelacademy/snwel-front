@@ -30,7 +30,7 @@ const content: { title: string, desc: string, icon?: ReactNode }[] = [
 const WhyChooseUs = () => {
     return (
         <div className='grid grid-cols-1 items-center md:grid-cols-2 gap-5'>
-            <div>
+            <div className='flex justify-center md:block flex-col text-center md:text-start'>
                 <SectionTitle title=' Who We Are: Building Your Engineering Expertise' />
                 <Typography as="p" className='max-w-2xl'>Empower your engineering career with Snwel Academy, your trusted partner for industry-relevant training.</Typography>
                 <Button size="lg" className='mt-5'>Learn More</Button>

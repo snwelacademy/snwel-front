@@ -1,3 +1,4 @@
+import AnimatedComponent from "@/components/animate/AnimatedComponent";
 import CourseTabByCategory from "@/components/courses/CourseTabByCategory";
 import PopularCourseSlider from "@/components/courses/PopularCourseSlider";
 import PremiumCourseSection from "@/components/courses/PremiumCourseSection";
@@ -18,7 +19,9 @@ const HomePage = () => {
     <div>
       <Hero />
 
-      <div className="container mx-auto px-4 mt-40">
+      <AnimatedComponent/>
+
+      <div className="container mx-auto px-4 mt-20 md:mt-40">
         <StatisticsSection />
       </div>
 
@@ -48,13 +51,13 @@ const HomePage = () => {
       </section>
 
 
-      <div className="container mx-auto px-4 mt-40">
+      <div className="container mx-auto px-4 mt-20 md:mt-40">
         <SectionTitle title="Our Courses" />
         <CourseTabByCategory />
       </div>
 
 
-      <div className="container mx-auto px-4 mt-40">
+      <div className="container mx-auto px-4 mt-20 md:mt-40">
         <MarketingOne />
       </div>
 
@@ -62,10 +65,10 @@ const HomePage = () => {
         <CtaOne />
       </div>
 
-      <div className="container mx-auto px-4 mt-40">
+      <div className="container mx-auto px-4 mt-20 md:mt-40">
         <Testimonial />
       </div>
-      <div className=" mt-40">
+      <div className=" mt-20 md:mt-40">
         <CtaTwo />
       </div>
       <div className=" container mx-auto py-28">
