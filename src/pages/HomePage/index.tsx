@@ -1,4 +1,4 @@
-import AnimatedComponent from "@/components/animate/AnimatedComponent";
+// import AnimatedComponent from "@/components/animate/AnimatedComponent";
 import CourseTabByCategory from "@/components/courses/CourseTabByCategory";
 import PopularCourseSlider from "@/components/courses/PopularCourseSlider";
 import PremiumCourseSection from "@/components/courses/PremiumCourseSection";
@@ -19,7 +19,7 @@ const HomePage = () => {
     <div>
       <Hero />
 
-      <AnimatedComponent/>
+      {/* <AnimatedComponent/> */}
 
       <div className="container mx-auto px-4 mt-20 md:mt-40">
         <StatisticsSection />
