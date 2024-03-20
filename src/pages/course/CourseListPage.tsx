@@ -5,7 +5,7 @@ import PageHeader from '@/components/shared/PageHeader'
 import { getAllCourses, getCourseByCategory } from '@/services/course-service'
 import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
-import { useLocation, useRoutes } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const CourseListPage = () => {
     const [courses, setCourses] = useState(getAllCourses());
@@ -17,7 +17,7 @@ const CourseListPage = () => {
         console.log({category})
         if (category) {
             setFilter({ category });
-            setCourses(crs => getCourseByCategory(category))
+            setCourses(_crs => getCourseByCategory(category))
         }
     }, [loc])
 

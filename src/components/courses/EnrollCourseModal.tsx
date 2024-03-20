@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 import JoinCourseForm from '../shared/JoinCourseForm'
 

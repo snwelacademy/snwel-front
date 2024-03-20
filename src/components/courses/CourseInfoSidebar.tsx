@@ -1,5 +1,4 @@
 import { Course } from '@/types/Course'
-import React from 'react'
 import Typography from '../typography'
 
 const CourseInfoSidebar = ({

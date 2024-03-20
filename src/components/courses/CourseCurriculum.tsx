@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Typography from '../typography'
 import { Book, Clock } from 'lucide-react'
 

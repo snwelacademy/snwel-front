@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormControl, FormField, FormItem } from '../ui/form';
 import CourseCategorySelector from './CourseCategorySelector';
-import { useEffect } from 'react';
 
 
 export type CourseListMode = 'LIST' | 'GRID';
@@ -22,7 +21,6 @@ export type CourseFilterData  = z.infer<typeof CourseFilterSchema>
 
 const CourseFilter = ({
     value,
-    onChange,
 }: {
     value?: z.infer<typeof CourseFilterSchema>,
     onChange?: (value: z.infer<typeof CourseFilterSchema>) => void
