@@ -5,6 +5,7 @@ import HighlightedText from '../typography/HighlightedHeading'
 import { Calendar, CreditCard, DiamondIcon, RocketIcon } from 'lucide-react'
 import { nanoid } from 'nanoid'
 import { Button } from '../ui/button'
+import FadeInStaggered from '../animate/FadeinStaggered'
 
 const content: { title: string, icon: ReactNode, subtitle: string }[] = [
     {
@@ -52,8 +53,10 @@ const StatisticsSection = () => {
                     <RoudendPan image="/assets/images/Vector-1.2.webp" />
                 </div>
                 <div className='flex flex-col gap-5'>
-                    <RoudendPan image="/assets/images/advanced-stress-anlysis-piping-system-sq.jpg" />
-                    <RoudendPan image="/assets/images/New-Rectangle-4.webp" />
+                    <FadeInStaggered>
+                        <RoudendPan image="/assets/images/advanced-stress-anlysis-piping-system-sq.jpg" />
+                        <RoudendPan image="/assets/images/New-Rectangle-4.webp" />
+                    </FadeInStaggered>
                 </div>
             </div>
 
@@ -72,7 +75,7 @@ const StatisticsSection = () => {
                         content.map(ct => {
                             return <div key={nanoid()} className='flex gap-5 '>
                                 <div className='flex items-start justify-start text-primary'>
-                                   <span> {ct.icon}</span>
+                                    <span> {ct.icon}</span>
                                 </div>
                                 <div>
                                     <Typography as="h1" className={"font-bold mb-4 text-3xl md:text-4xl text-primary"}>{ct.title}</Typography>

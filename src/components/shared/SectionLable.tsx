@@ -10,7 +10,7 @@ const HeadingSubtitle = ({
   return (
     <span 
     className={cn([
-        `heading-subtitle text-primary-foreground before:bg-primary-foreground after:bg-primary-foreground mb-5 tracking-widest text-xs md:text-base text-center`,
+        `heading-subtitle text-primary before:bg-primary after:bg-primary  tracking-widest text-xs md:text-base text-center mb-10`,
         className
     ])}
     >{title}</span>

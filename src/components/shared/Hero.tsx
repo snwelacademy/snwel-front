@@ -29,7 +29,7 @@ const Hero = () => {
                                     </div>
                                     <div className="flex items-center">
                                         <div className=" lg:mt-0 text-center ">
-                                            <HeadingSubtitle title='independent institution with' />
+                                            <HeadingSubtitle className='text-primary-foreground before:bg-primary-foreground after:bg-primary-foreground' title='independent institution with' />
                                             <Typography as={'heroTitle'} className="mb-16 text-4xl font-black tracking-tight md:text-6xl xl:text-6xl text-primary-foreground text-center">
                                                 Elevate Your Engineering Expertise <br />with Specialized Training
                                             </Typography>

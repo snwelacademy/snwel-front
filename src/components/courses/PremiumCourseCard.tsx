@@ -3,6 +3,8 @@ import { Course } from '@/types/Course';
 import Typography from '../typography'
 import { Button } from '../ui/button'
 import { ArrowRight } from 'lucide-react'
+import EnrollCourseModal from './EnrollCourseModal';
+import { Link } from 'react-router-dom';
 
 const PremiumCourseCard = ({
     className,
@@ -35,9 +37,12 @@ const PremiumCourseCard = ({
                     return <Typography as="lable" className={'tracking-wider uppercase text-xs'}>{ct}</Typography>
                 })
             }
-            <Typography as="h2" className='text-3xl'>{course.title}</Typography>
+            <Link className='block' to={`/courses/${course.id}`}><Typography as="h2" className='text-3xl'>{course.title}</Typography></Link>
         </div>
-        <Button className='absolute left-5 bottom-5 bg-amber-500 hover:bg-amber-600 text-white'><span>ENROLL NOW</span><ArrowRight/></Button>
+        <EnrollCourseModal
+        trigger={<Button className='absolute left-5 bottom-5 bg-amber-500 hover:bg-amber-600 text-white'><span>ENROLL NOW</span><ArrowRight/></Button>}
+        courseId={course.id}
+         />
     </div>
   )
 }

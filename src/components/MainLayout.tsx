@@ -8,7 +8,7 @@ const MainLayout = () => {
     return (
         <div>
             <TopStrip />
-            <nav className=' bg-transparent'>
+            <nav className=' bg-transparent z-50'>
                 <MainNavbar />
             </nav>
 
@@ -16,7 +16,7 @@ const MainLayout = () => {
                 <Outlet />
             </div>
 
-            <footer className='bg-black'><Footer /></footer>
+            <footer className='bg-primary/20'><Footer /></footer>
         </div>
     )
 }

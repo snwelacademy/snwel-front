@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input"
 import CourseSelector from './CourseSelector';
 import Typography from '../typography';
+import { cn } from '@/lib/utils';
 
 
 const formSchema = z.object({
@@ -21,10 +22,10 @@ const formSchema = z.object({
   course: z.string()
 })
 
-const JoinCourseForm = () => {
+const JoinCourseForm = ({className, value}: {className?: string, value?: z.infer<typeof formSchema>}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {}
+    defaultValues: value || {}
   });
 
 
@@ -34,7 +35,7 @@ const JoinCourseForm = () => {
 
   return (
     <Form {...form} >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 rounded-2xl bg-primary/5 p-4 md:p-10">
+      <form onSubmit={form.handleSubmit(onSubmit)} className={cn(["space-y-3 rounded-2xl bg-primary/5 p-4 md:p-10", className])}>
         <FormField
           control={form.control}
           name="name"

@@ -9,14 +9,17 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-    
+
 import { Flip } from "gsap/Flip";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
+import PopupModal from './components/shared/PopupModal';
+import CourseListPage from './pages/course/CourseListPage';
+import SingleCoursePage from './pages/course/SingleCoursePage';
 
-gsap.registerPlugin(useGSAP,Flip,ScrollTrigger,Observer,ScrollToPlugin,TextPlugin);
+gsap.registerPlugin(useGSAP, Flip, ScrollTrigger, Observer, ScrollToPlugin, TextPlugin);
 
 
 const router = createBrowserRouter(
@@ -25,6 +28,9 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="about" element={<AboutPage />} />
       <Route path='contact' element={<ContactPage />} />
+      <Route path='courses' element={<CourseListPage />} >
+      </Route>
+      <Route path='courses/:courseId' element={<SingleCoursePage />} />
     </Route>
   )
 )
@@ -34,7 +40,8 @@ function App() {
   return (
     <>
       <ParallaxProvider>
-      <RouterProvider router={router} />
+        <PopupModal />
+        <RouterProvider router={router} />
       </ParallaxProvider>
     </>
   );

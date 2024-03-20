@@ -16,7 +16,7 @@ const convertCourseDataToMenu = (option?: {isPremiumAllowed?: boolean}) => {
     return categories.map(cc => {
         return {
             label: cc.title,
-            link: `/category/${cc.id}`,
+            link: `/courses/?category=${cc.id}`,
             children: filterCourse(getCourseByCategory(cc.id), {isPremiumAllwed: option?.isPremiumAllowed}).map(cs => {
                 return {
                     label: cs.title
@@ -51,12 +51,8 @@ const menus: Menu[] = [
 
     {
         label: "Courses",
+        link: '/courses',
         children: convertCourseDataToMenu({isPremiumAllowed: false})
-    },
-
-    {
-        label: "Premium Courses",
-        children: convertCourseDataToMenu({isPremiumAllowed: true})
     },
 
     {

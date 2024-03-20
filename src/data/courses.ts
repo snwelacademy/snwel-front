@@ -1,4 +1,17 @@
 import { Course } from "@/types/Course";
+import { faker } from '@faker-js/faker';
+
+const generateCurriculam = (count: number) => {
+  const crr: {title: string, duration: string}[] = []
+  for (let index = 0; index < count; index++) {
+    const res = {
+      title: faker.word.words(5),
+      duration: `${faker.number.int()}hrs`
+    };
+    crr.push(res)
+  }
+  return crr;
+}
 
 const courseData: Course[] = [
   {
@@ -26,7 +39,8 @@ const courseData: Course[] = [
     },
     images: {
       promotionalCardImage: "/assets/images/demo-course-img-02.webp"
-    }
+    },
+    curriculum: generateCurriculam(10)
   },
   {
     id: "iuyiwe",
@@ -53,8 +67,8 @@ const courseData: Course[] = [
     },
     images: {
       promotionalCardImage: "/assets/images/demo-course-img-05.webp"
-    }
-
+    },
+    curriculum: generateCurriculam(5)
   },
   {
     id: "iuy",
@@ -81,7 +95,8 @@ const courseData: Course[] = [
     },
     images: {
       promotionalCardImage: "/assets/images/demo-course-img-06.webp"
-    }
+    },
+    curriculum: generateCurriculam(7)
   },
   {
     id: "iu",
@@ -102,6 +117,7 @@ const courseData: Course[] = [
     isPopular: false,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(11)
   },
   {
     id: "uysdfa",
@@ -122,6 +138,7 @@ const courseData: Course[] = [
     isPopular: true,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(3)
   },
   {
     id: "uihsa",
@@ -142,6 +159,7 @@ const courseData: Course[] = [
     isPopular: false,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(7)
   },
   {
     id: "uiicb",
@@ -162,6 +180,7 @@ const courseData: Course[] = [
     isPopular: true,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(9)
   },
   {
     id: "moijovd",
@@ -182,6 +201,7 @@ const courseData: Course[] = [
     isPopular: false,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(6)
   },
   {
     id: "kjnvds",
@@ -202,6 +222,7 @@ const courseData: Course[] = [
     isPopular: true,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(4)
   },
   {
     id: "kjnvds",
@@ -222,6 +243,7 @@ const courseData: Course[] = [
     isPopular: false,
     price: 1000,
     currency: "INR",
+    curriculum: generateCurriculam(20)
   },
 ];
 

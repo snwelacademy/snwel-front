@@ -6,6 +6,7 @@ import { Button } from '../ui/button'
 import { getAllCourseCategories } from '@/services/caourse-category-service'
 import { nanoid } from 'nanoid'
 import NewsLetterForm from '../shared/NewsLetterForm'
+import { Link } from 'react-router-dom'
 
 const socialIcons: { link: string, icon: ReactNode }[] = [
     {
@@ -25,19 +26,19 @@ const socialIcons: { link: string, icon: ReactNode }[] = [
 const importantLink: { title: string, link: string }[] = [
     {
         title: "Home",
-        link: "#"
+        link: "/"
     },
     {
         title: "About",
-        link: "#"
+        link: "/about"
     },
     {
         title: "Contact",
-        link: "#"
+        link: "/contact"
     },
     {
         title: "All Courses",
-        link: "#"
+        link: "/courses"
     },
     {
         title: "Terms & Conditions",
@@ -68,7 +69,7 @@ const Footer = () => {
                 <div className='flex flex-col items-start'>
                     {
                         getAllCourseCategories().map(ctg => {
-                            return <Button className='py-0' key={nanoid()} variant={'link'}>{ctg.title}</Button>
+                            return <Link to={`/courses/?category=${ctg.id}`}><Button className='py-0' key={nanoid()} variant={'link'}>{ctg.title}</Button></Link>
                         })
                     }
                 </div>
@@ -78,7 +79,7 @@ const Footer = () => {
                 <div className='flex flex-col items-start'>
                     {
                         importantLink.map(ctg => {
-                            return <Button className='py-0' key={nanoid()} variant={'link'}>{ctg.title}</Button>
+                            return <Link to={ctg.link}><Button className='py-0' key={nanoid()} variant={'link'}>{ctg.title}</Button></Link>
                         })
                     }
                 </div>

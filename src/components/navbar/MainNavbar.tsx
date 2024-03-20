@@ -39,9 +39,9 @@ const MenuItemChildren = ({
 }: { menu: Menu }) => {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger>{menu.label}</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <div className='md:w-[500px] grid grid-cols-2 md:grid-cols-2 gap-2 p-2'>
+      <NavigationMenuTrigger><Link to={menu.link||'#'}>{menu.label}</Link></NavigationMenuTrigger>
+      <NavigationMenuContent className="left-0">
+        <div className='w-[500px] grid grid-cols-2 md:grid-cols-2 gap-2 p-2'>
         {
           menu.children?.map(m => {
             return <Link to={m.link || '#'} className='flex w-full'>
@@ -85,7 +85,7 @@ const MainNavbar = () => {
     <div className='flex items-center justify-between gap-4 py-3 px-2 md:px-10 bg-background'>
 
       <div>
-        <Logo />
+        <Link to="/"><Logo /></Link>
       </div>
 
       <div className='hidden md:block'>

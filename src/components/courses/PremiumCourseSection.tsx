@@ -1,15 +1,16 @@
 
+import { cn } from '@/lib/utils'
 import HeadingSubtitle from '../shared/SectionLable'
 import Typography from '../typography'
 import HighlightedText from '../typography/HighlightedHeading'
 import PremiumCourseCard from './PremiumCourseCard'
 import { getAllCourses } from '@/services/course-service'
 
-const PremiumCourseSection = () => {
+const PremiumCourseSection = ({className}: {className?: string}) => {
     
     const premiumCourses = getAllCourses().slice(0, 3);
   return (
-    <section className='py-20 bg-primary/5 px-4'>
+    <section className={cn(['py-20 bg-primary/5 px-4', className])}>
         <div className='text-primary flex items-center justify-center flex-col max-w-4xl mx-auto text-center mb-10'>
             <HeadingSubtitle title='LINKING UP EDUCATION' className='before:bg-primary after:bg-primary text-primary' />
             <Typography as="title" className='mb-7'>Explore Our <HighlightedText>Job Guaranteed Courses</HighlightedText></Typography>

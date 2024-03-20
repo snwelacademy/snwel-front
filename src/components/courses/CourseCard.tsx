@@ -4,6 +4,7 @@ import { PersonIcon, ClockIcon } from '@radix-ui/react-icons'
 import { BookTextIcon } from 'lucide-react';
 import Typography from '../typography';
 import { getCurrencySymbol } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 type CourseCardProps = {
     course: Course
@@ -11,6 +12,7 @@ type CourseCardProps = {
 
 const CourseCard = ({
     course: {
+      id,
         title,
         // description,
         shortDescription,
@@ -24,8 +26,8 @@ const CourseCard = ({
 
 
   return (
-    <div className='bg-white'>
-      <Card className="max-w-sm rounded-2xl overflow-hidden shadow-lg relative pb-12 bg-primary/10">
+    <Link to={`/courses/${id}`} className='bg-white cursor-pointer block'>
+      <Card className="max-w-md rounded-2xl overflow-hidden shadow-lg relative pb-12 bg-primary/10">
       <div className='aspect-video bg-center bg-cover bg-no-repeat relative' style={{ backgroundImage: `url(${image})` }}>
         {/* <img className="w-full" src={image} alt={title} /> */}
         <div className='absolute bottom-0 px-3 py-2 flex items-center gap-3'>
@@ -53,7 +55,7 @@ const CourseCard = ({
         </span>
       </div>
     </Card>
-    </div>
+    </Link>
   )
 }
 

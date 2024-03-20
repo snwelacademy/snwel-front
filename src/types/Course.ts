@@ -24,5 +24,6 @@ export type Course = {
     }
     images?: {
         promotionalCardImage?: string
-    }
+    },
+    curriculum:{title: string, duration: string} []
 }
