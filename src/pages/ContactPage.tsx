@@ -11,7 +11,7 @@ const ContactPage = () => {
     <>
     <PageHeader title="Contact" image={`${constants.imagePath}/bim.jpg`} />
     <section className="py-20 px-4">
-      <div className="container mx-auto flex gap-10">
+      <div className="container mx-auto flex gap-10 flex-col lg:flex-row px-4">
         <div className="flex-auto ">
           <HeadingSubtitle title="Contact Us" />
           <Typography as="title">We're Here To Provide <br /> <HighlightedText>24X7Support</HighlightedText></Typography>

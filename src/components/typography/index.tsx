@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import React from 'react';
 
 const typographicStyles: { [key: string]: string } = {
-    heroTitle: 'text-5xl font-black',
+    heroTitle: 'md:text-5xl font-black text-4xl',
     title: 'text-3xl md:text-5xl font-bold text-gray-800 ',
     subtitle: 'text-2xl font-semibold',
     h1: 'text-3xl font-bold',

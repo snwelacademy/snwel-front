@@ -27,7 +27,7 @@ const CourseListPage = () => {
             <PageHeader title="Course Listing" />
 
             <section className='py-20 px-4'>
-                <div className="container mx-auto ">
+                <div className="container mx-auto px-4">
                     <div className='p-4 rounded-2xl shadow'>
                         <CourseFilter value={courseFilter} onChange={setFilter} />
                     </div>

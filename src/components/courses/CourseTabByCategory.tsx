@@ -9,7 +9,7 @@ const CourseTabByCategory = () => {
     const categories = getAllCourseCategories();
     return (
         <Tabs defaultValue={categories[0].id} className="">
-            <TabsList className="w-full justify-start">
+            <TabsList className="w-full justify-start overflow-x-auto">
                 {
                     categories.map(ct => {
                         return  <TabsTrigger key={ct.id} value={ct.id}>{ct.title}</TabsTrigger>

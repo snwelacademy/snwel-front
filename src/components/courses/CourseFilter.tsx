@@ -54,13 +54,13 @@ const CourseFilter = ({
     return (
         <Form {...form}>
             <form>
-                <div className='flex items-center justify-between flex-col md:flex-row'>
+                <div className='flex items-center justify-between flex-col md:flex-row gap-3'>
                     
                         <FormField
                             control={form.control}
                             name="search"
                             render={({ field }) => (
-                                <FormItem className=''>
+                                <FormItem className='w-full md:w-auto'>
                                     <FormControl>
                                         <div className='border-b flex items-center gap-2 px-2'>
                                             <Input className='border-0 bg-transparent' placeholder="Search" {...field} />
@@ -75,7 +75,7 @@ const CourseFilter = ({
                             control={form.control}
                             name="category"
                             render={({ field }) => (
-                                <FormItem>
+                                <FormItem className='w-full md:w-auto'>
                                     <FormControl>
                                         <CourseCategorySelector {...field} />
                                     </FormControl>

@@ -4,8 +4,8 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
+    // CarouselNext,
+    // CarouselPrevious,
 } from "@/components/ui/carousel"
 import CourseCard from './CourseCard';
 
@@ -29,10 +29,11 @@ const PopularCourseSlider = () => {
                         <CarouselItem className='md:basis-1/2 lg:basis-1/3' key={courseData.id}>
                             <CourseCard course={courseData} />
                         </CarouselItem>
-                    ))}
+                    ))
+                    }
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                {/* <CarouselPrevious />
+                <CarouselNext /> */}
             </Carousel>
 
         </div>

@@ -15,6 +15,8 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { SearchIcon, ShoppingBagIcon } from 'lucide-react';
+import { nanoid } from 'nanoid';
+import MobileNavbar from './MobileNavbar';
 
 // const CategoryMenu = ({
 //   menu
@@ -44,7 +46,7 @@ const MenuItemChildren = ({
         <div className='w-[500px] grid grid-cols-2 md:grid-cols-2 gap-2 p-2'>
         {
           menu.children?.map(m => {
-            return <Link to={m.link || '#'} className='flex w-full'>
+            return <Link to={m.link || '#'} className='flex w-full' key={nanoid()}>
               <NavigationMenuLink className={cn([navigationMenuTriggerStyle(), 'block w-full'])}>
                 {m.label}
               </NavigationMenuLink>
@@ -62,7 +64,6 @@ const SimpleNavlink = ({ menu }: { menu: Menu }) => {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    console.log(isActive, Boolean(menu.link && menu.link === pathname))
     setIsActive(Boolean(menu.link && menu.link === pathname));
   },[pathname] )
 
@@ -80,6 +81,8 @@ const SimpleNavlink = ({ menu }: { menu: Menu }) => {
   )
 }
 
+
+
 const MainNavbar = () => {
   return (
     <div className='flex items-center justify-between gap-4 py-3 px-2 md:px-10 bg-background'>
@@ -94,8 +97,8 @@ const MainNavbar = () => {
             {
               menus.map(m => {
                 return !m.children || m.children.length <= 0 ?
-                  <SimpleNavlink menu={m} />
-                  : <MenuItemChildren menu={m} />
+                  <SimpleNavlink menu={m} key={nanoid()} />
+                  : <MenuItemChildren menu={m} key={nanoid()} />
               })
             }
 
@@ -103,7 +106,11 @@ const MainNavbar = () => {
         </NavigationMenu>
       </div>
 
-      <div className='inline-flex items-center gap-3'>
+      <div className='block md:hidden'>
+        <MobileNavbar/>
+      </div>
+
+      <div className=' items-center gap-3 hidden md:inline-flex'>
         <Button size={'icon'} variant={'ghost'}><SearchIcon/></Button>
         <Button size={'icon'} variant={'ghost'}><ShoppingBagIcon/></Button>
         <Button>GET STARTED</Button>

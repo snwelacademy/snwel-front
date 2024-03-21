@@ -1,4 +1,5 @@
 
+import Autoplay from 'embla-carousel-autoplay'
 import Typography from '../typography'
 import { Button } from '../ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
@@ -6,17 +7,21 @@ import HighlightPan from './HighlightPan'
 import HeadingSubtitle from './SectionLable'
 import {Parallax} from 'react-scroll-parallax';
 
-// const content = {
-//     title: "",
-//     subtitle: "",
-//     buttonText: "",
-//     image: ""
-// }
 
 const Hero = () => {
 
     return (
-        <Carousel>
+        <Carousel 
+        opts={{
+            loop: true
+        }}
+        plugins={[
+            Autoplay({
+              delay: 5000,
+            }),
+
+          ]}
+        >
             <CarouselContent>
                 <CarouselItem>
                     <Parallax speed={-10}>
@@ -53,16 +58,17 @@ const Hero = () => {
                     </Parallax>
                 </CarouselItem>
                 <CarouselItem>
-                    <div className='min-h-screen' style={{ backgroundImage: 'url(/assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                <Parallax speed={-10}>
+                    <div className='min-h-screen' style={{ backgroundImage: 'url(assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="px-6 text-center lg:text-left bg-transparent">
                             <div className="w-100 mx-auto pt-20">
-                                <div className="flex ">
-                                    <div className="w-[40%]">
+                                <div className="flex flex-col lg:flex-row">
+                                    <div className="w-full  lg:w-[40%]">
                                         <img src="/assets/images/hero-img-1.webp" className="w-full" alt="" />
                                     </div>
                                     <div className="flex items-center">
-                                        <div className=" lg:mt-0 text-center  ">
-                                            <HeadingSubtitle title='independent institution with' />
+                                        <div className=" lg:mt-0 text-center ">
+                                            <HeadingSubtitle className='text-primary-foreground before:bg-primary-foreground after:bg-primary-foreground' title='independent institution with' />
                                             <Typography as={'heroTitle'} className="mb-16 text-4xl font-black tracking-tight md:text-6xl xl:text-6xl text-primary-foreground text-center">
                                                 Elevate Your Engineering Expertise <br />with Specialized Training
                                             </Typography>
@@ -72,17 +78,18 @@ const Hero = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-[40%]">
+                                    <div className="hidden lg:block w-[40%]">
                                         <img src="/assets/images/hero-img-2.webp" className="w-full" alt="" />
                                     </div>
                                 </div>
 
-                                <div className=''>
+                                <div className='mt-10 lg:mt-0'>
                                     <HighlightPan />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </Parallax>
                 </CarouselItem>
             </CarouselContent>
         </Carousel>
