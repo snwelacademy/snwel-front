@@ -63,6 +63,14 @@ const menus: Menu[] = [
     {
         label: 'Contact',
         link: '/contact'
+    },
+    {
+        label: 'Blogs',
+        link: '/blogs'
+    },
+    {
+        label: 'Webinars',
+        link: '/webinars'
     }
 ];
 

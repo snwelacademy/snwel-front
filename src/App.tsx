@@ -18,6 +18,11 @@ import { TextPlugin } from "gsap/TextPlugin";
 import PopupModal from './components/shared/PopupModal';
 import CourseListPage from './pages/course/CourseListPage';
 import SingleCoursePage from './pages/course/SingleCoursePage';
+import BloglistingPage from './pages/blog/BloglistingPage';
+import SingleBlogPage from './pages/blog/SingleBlogPage';
+import WebinarListingPage from './pages/webinar/WebinarListingPage';
+import SingleWebinar from './components/webinar/SingleWebinar';
+import SingleWebinarPage from './pages/webinar/SingleWebinarPage';
 
 gsap.registerPlugin(useGSAP, Flip, ScrollTrigger, Observer, ScrollToPlugin, TextPlugin);
 
@@ -28,9 +33,12 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="about" element={<AboutPage />} />
       <Route path='contact' element={<ContactPage />} />
-      <Route path='courses' element={<CourseListPage />} >
-      </Route>
       <Route path='courses/:courseId' element={<SingleCoursePage />} />
+      <Route path='courses' element={<CourseListPage />} />
+      <Route path='blogs' element={<BloglistingPage />} />
+      <Route path='blogs/:slug' element={<SingleBlogPage />} />
+      <Route path='webinars' element={<WebinarListingPage />} />
+      <Route path='webinars/:slug' element={<SingleWebinarPage />} />
     </Route>
   )
 )

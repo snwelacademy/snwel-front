@@ -18,12 +18,14 @@ export type Course = {
     currency: string,
     discount?: number,
     isPremium?: boolean,
+    masterCategory: string,
     appearence?: {
         themeColor?: string,
         forgroundColor?: string
     }
     images?: {
-        promotionalCardImage?: string
+        promotionalCardImage?: string,
+        iconImage?: string
     },
     curriculum:{title: string, duration: string} []
 }

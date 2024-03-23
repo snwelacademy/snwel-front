@@ -16,7 +16,7 @@ const generateCurriculam = (count: number) => {
 const courseData: Course[] = [
   {
     id: "jhbjhd",
-    title: "Piping Design Fundamentals",
+    title: "Piping Engineering",
     image: "/assets/images/piping-design.jpg",
     shortDescription: "Master the core concepts",
     description:
@@ -37,7 +37,9 @@ const courseData: Course[] = [
       themeColor: '#14452F',
       forgroundColor: '#fff'
     },
+    masterCategory: "Short-Term Courses",
     images: {
+      iconImage: '/assets/images/piping_engineering_exceltechnicalinstitute_thane.png',
       promotionalCardImage: "/assets/images/demo-course-img-02.webp"
     },
     curriculum: generateCurriculam(10)
@@ -61,11 +63,13 @@ const courseData: Course[] = [
     isPopular: false,
     price: 1000,
     currency: "INR",
+    masterCategory: "",
     appearence: {
       themeColor: '#008799',
       forgroundColor: '#fff'
     },
     images: {
+      iconImage: "",
       promotionalCardImage: "/assets/images/demo-course-img-05.webp"
     },
     curriculum: generateCurriculam(5)
@@ -89,12 +93,14 @@ const courseData: Course[] = [
     isPopular: true,
     price: 1000,
     currency: "INR",
+    masterCategory: "Shor",
     appearence: {
       themeColor: '#EB592A',
       forgroundColor: '#fff'
     },
     images: {
-      promotionalCardImage: "/assets/images/demo-course-img-06.webp"
+      promotionalCardImage: "/assets/images/demo-course-img-06.webp",
+
     },
     curriculum: generateCurriculam(7)
   },
@@ -115,6 +121,7 @@ const courseData: Course[] = [
     rating: 4.2,
     enrolled: 105,
     isPopular: false,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(11)
@@ -136,6 +143,7 @@ const courseData: Course[] = [
     rating: 4.9,
     enrolled: 210,
     isPopular: true,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(3)
@@ -157,6 +165,7 @@ const courseData: Course[] = [
     rating: 4.3,
     enrolled: 98,
     isPopular: false,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(7)
@@ -178,6 +187,7 @@ const courseData: Course[] = [
     rating: 4.6,
     enrolled: 54,
     isPopular: true,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(9)
@@ -199,6 +209,7 @@ const courseData: Course[] = [
     rating: 4.7,
     enrolled: 82,
     isPopular: false,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(6)
@@ -220,6 +231,7 @@ const courseData: Course[] = [
     rating: 4.4,
     enrolled: 130,
     isPopular: true,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(4)
@@ -241,6 +253,7 @@ const courseData: Course[] = [
     rating: 4.1,
     enrolled: 68,
     isPopular: false,
+    masterCategory: '',
     price: 1000,
     currency: "INR",
     curriculum: generateCurriculam(20)

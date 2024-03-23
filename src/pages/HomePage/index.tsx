@@ -1,4 +1,5 @@
 // import AnimatedComponent from "@/components/animate/AnimatedComponent";
+import PopularBlogsSection from "@/components/blog/PopularBlogsSection";
 import CourseTabByCategory from "@/components/courses/CourseTabByCategory";
 import PopularCourseSlider from "@/components/courses/PopularCourseSlider";
 import PremiumCourseSection from "@/components/courses/PremiumCourseSection";
@@ -71,11 +72,15 @@ const HomePage = () => {
       <div className=" mt-20 md:mt-40">
         <CtaTwo />
       </div>
+
+      <section className="py-20 bg-primary/5">
+        <div className="container mx-auto px-4"><PopularBlogsSection/></div>
+      </section>
+
+      
       <div className=" container mx-auto py-28">
         <JoinCourseSection />
       </div>
-
-
       
     </div>
   )

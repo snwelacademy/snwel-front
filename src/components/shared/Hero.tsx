@@ -5,7 +5,7 @@ import { Button } from '../ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import HighlightPan from './HighlightPan'
 import HeadingSubtitle from './SectionLable'
-import {Parallax} from 'react-scroll-parallax';
+// import {Parallax} from 'react-scroll-parallax';
 
 
 const Hero = () => {
@@ -24,8 +24,8 @@ const Hero = () => {
         >
             <CarouselContent>
                 <CarouselItem>
-                    <Parallax speed={-10}>
-                    <div className='min-h-screen' style={{ backgroundImage: 'url(assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    {/* <Parallax speed={-10}> */}
+                    <div className='min-h-screen pb-5' style={{ backgroundImage: 'url(assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="px-6 text-center lg:text-left bg-transparent">
                             <div className="w-100 mx-auto pt-20">
                                 <div className="flex flex-col lg:flex-row">
@@ -55,11 +55,11 @@ const Hero = () => {
                             </div>
                         </div>
                     </div>
-                    </Parallax>
+                    {/* </Parallax> */}
                 </CarouselItem>
                 <CarouselItem>
-                <Parallax speed={-10}>
-                    <div className='min-h-screen' style={{ backgroundImage: 'url(assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                {/* <Parallax speed={-10}> */}
+                    <div className='min-h-screen pb-5' style={{ backgroundImage: 'url(assets/images/hero-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="px-6 text-center lg:text-left bg-transparent">
                             <div className="w-100 mx-auto pt-20">
                                 <div className="flex flex-col lg:flex-row">
@@ -89,7 +89,7 @@ const Hero = () => {
                             </div>
                         </div>
                     </div>
-                    </Parallax>
+                    {/* </Parallax> */}
                 </CarouselItem>
             </CarouselContent>
         </Carousel>

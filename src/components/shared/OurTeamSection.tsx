@@ -35,7 +35,7 @@ const OurTeamSection = ({ className }: { className?: string }) => {
             <div className='text-primary  flex-col max-w-4xl mx-auto text-center mb-10'>
                 <HeadingSubtitle title='LINKING UP EDUCATION' className='before:bg-primary after:bg-primary text-primary' />
                 <div className="flex items-center justify-between flex-col gap-3">
-                    <Typography as="title" className='mb-7'>Explore Our <HighlightedText>Job Guaranteed Courses</HighlightedText></Typography>
+                    <Typography as="title" className='mb-7'>Meet Our <HighlightedText>Instructors</HighlightedText></Typography>
                     <Button size={'lg'}>View All Instructors</Button>
                 </div>
             </div>

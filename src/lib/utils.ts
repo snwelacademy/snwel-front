@@ -1,3 +1,4 @@
+import { constants } from "@/config/constants";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -12,4 +13,9 @@ export function getCurrencySymbol(currencyCode: string){
   };
 
   return currencySymbolMap[currencyCode.toLocaleUpperCase() as keyof typeof currencySymbolMap] || ''
+}
+
+
+export function getPublicImage(path: string){
+  return constants.imagePath+path
 }
