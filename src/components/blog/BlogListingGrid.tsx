@@ -1,6 +1,5 @@
 import { Blog } from '@/types/Blog'
 import { nanoid } from 'nanoid'
-import React from 'react'
 import BlogCard from './BlogCard'
 
 const BlogListingGrid = ({

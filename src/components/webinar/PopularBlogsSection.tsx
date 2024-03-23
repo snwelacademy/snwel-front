@@ -1,7 +1,7 @@
 import { getAllBlogs } from "@/services/blog-service"
 import Typography from "../typography";
 import HeadingSubtitle from "../shared/SectionLable";
-import BlogCard from "./WebinarCard";
+import BlogCard from "../blog/BlogCard";
 
 
 const PopularBlogsSection = () => {

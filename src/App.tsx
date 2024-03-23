@@ -21,7 +21,6 @@ import SingleCoursePage from './pages/course/SingleCoursePage';
 import BloglistingPage from './pages/blog/BloglistingPage';
 import SingleBlogPage from './pages/blog/SingleBlogPage';
 import WebinarListingPage from './pages/webinar/WebinarListingPage';
-import SingleWebinar from './components/webinar/SingleWebinar';
 import SingleWebinarPage from './pages/webinar/SingleWebinarPage';
 
 gsap.registerPlugin(useGSAP, Flip, ScrollTrigger, Observer, ScrollToPlugin, TextPlugin);
