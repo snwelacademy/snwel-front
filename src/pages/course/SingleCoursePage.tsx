@@ -64,7 +64,7 @@ const SingleCoursePage = () => {
             </section>
 
             <section className='mb-20'>
-                <div className='container mx-auto flex gap-10 px-4 flex-col lg:flex-row'>
+                <div className='container mx-auto flex gap-10 px-4 flex-col lg:flex-row relative'>
                     <Tabs defaultValue="account" className="w-full"  value='curriculum'>
                         <TabsList className='w-full justify-start' >
                             <TabsTrigger value="curriculum" defaultChecked><Book className='w-4 h-4 mr-2' /> <span>Curriculum</span></TabsTrigger>
