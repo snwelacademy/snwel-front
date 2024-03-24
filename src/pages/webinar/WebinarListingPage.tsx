@@ -19,7 +19,7 @@ const WebinarListingPage = () => {
     }
     return (
         <>
-            <div className='relative w-full bg-center bg-cover flex flex-col items-center justify-center  min-h-96 bg-primary/10 text-center space-y-3'>
+            <div className='relative w-full bg-center bg-cover flex flex-col items-center justify-center  min-h-96 bg-primary/10 text-center space-y-3 px-4'>
                 <Typography as="heroTitle" className='text-primary z-20 max-w-3xl text-center'>Webinars</Typography>
                 <Typography as="p" className='max-w-3xl text-center'>Register now and unlock a world of knowledge designed to elevate your engineering skills and propel your career forward!</Typography>
 
