@@ -3,5 +3,6 @@ export type CourseCategory = {
     title: string,
     description?: string,
     shortDescription?: string,
-    isPremium?: boolean
+    isPremium?: boolean,
+    parentCategory?: CourseCategory
 }

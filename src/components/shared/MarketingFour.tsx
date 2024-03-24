@@ -28,7 +28,7 @@ const MarketingFour = () => {
         <div className='space-y-16 md:space-y-10'>
             {
                 content.map(ct => {
-                    return <div className='flex items-center gap-5 md:gap-10 flex-col md/odd:flex-row-reverse '>
+                    return <div className='flex items-center gap-5 md:gap-10 flex-col md:flex-row odd:md:flex-row-reverse '>
                         <div className='space-y-4 max-w-xl'>
                             <Typography as="h1">{ct.title}</Typography>
                             <Typography as="p" className='font-bold'>{ct.subTitle}</Typography>
