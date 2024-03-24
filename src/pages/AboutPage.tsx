@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import PremiumCourseSection from "@/components/courses/PremiumCourseSection";
 import OurTeamSection from "@/components/shared/OurTeamSection";
 import JoinCourseSection2 from "@/components/shared/JoinCourseSection2";
+import MarketingFour from "@/components/shared/MarketingFour";
 
 
 const AboutPage = () => {
@@ -26,10 +27,10 @@ const AboutPage = () => {
 
         <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-5 mt-14  ">
           <div className="flex items-center justify-center flex-col gap-5">
-            <Star className="w-20 text-primary h-20"></Star>
+            <Star className="w-20 text-primary h-20 "></Star>
             <span className="inline-flex p-2 text-primary-foreground gap-2 bg-primary rounded-xl items-center">
               <Typography as="h2" >9.6/10</Typography>
-              <Star className="w-6 h-6 fill-yellow-500 text-yellow-500" ></Star>
+              <Star className="w-6 h-6 fill-yellow-500 text-yellow-500 drop-shadow shadow-yellow-600" ></Star>
             </span>
             <Typography as="h3" className="text-primary">Student Rating</Typography>
           </div>
@@ -57,6 +58,13 @@ const AboutPage = () => {
             </span>
             <Typography as="h3" className="text-primary">Excellent Service</Typography>
           </div>
+        </div>
+      </section>
+
+
+      <section className="py-20">
+        <div className="container mx-auto">
+        <MarketingFour/>
         </div>
       </section>
 
