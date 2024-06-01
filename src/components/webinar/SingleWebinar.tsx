@@ -11,7 +11,8 @@ const SingleWebinar = ({
 }) => {
     return (
         <>
-            <section className='py-20 bg-primary/5 '>
+            <section className={`py-20 bg-[#e4e5ff] bg-center bg-cover bg-no-repeat bg-blend-overlay `} style={{backgroundImage: `url(${webinar.coverImage})`}}>
+                {/* <div className="absolute w-ful h-full bg-primary/5  " ></div> */}
                 <div className=' container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 items-center justify-items-center gap-10 '>
                     <div className='space-y-5 max-w-lg'>
                         <Typography as="title">{webinar.title}</Typography>

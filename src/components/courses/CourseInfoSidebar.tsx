@@ -15,8 +15,8 @@ const CourseInfoSidebar = ({
             <Typography as="p">Categories: </Typography>
             <div className='flex flex-wrap '>
                 {
-                    course.category.map(c => {
-                        return <Typography as="p" className='font-bold'>{c}</Typography>
+                    course.categories.map(c => {
+                        return <Typography as="p" className='font-bold'>{c.title}</Typography>
                     })
                 }
             </div>
@@ -41,7 +41,7 @@ const CourseInfoSidebar = ({
             </div>
         </div>
         <div className='flex items-center gap-2  py-3' >
-            <EnrollCourseModal trigger={<Button className='w-full'>Enroll Now</Button>} courseId={course.id}/>
+            <EnrollCourseModal trigger={<Button className='w-full'>Enroll Now</Button>} courseId={course._id}/>
         </div>
     </div>
   )

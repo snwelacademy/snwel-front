@@ -3,18 +3,24 @@
 import Typography from '@/components/typography'
 import { Input } from '@/components/ui/input'
 import WebinarGridList from '@/components/webinar/WebinarGridList'
-import { getAllWebinars, searchWebinar } from '@/services/webinar-service'
-import { Webinar } from '@/types/Webinar'
-import { useState } from 'react'
+import { getListOptionsFromSearchParams } from '@/lib/utils'
+import { getAllWebinars } from '@/services/admin/webinar-service'
+import { useQuery } from '@tanstack/react-query'
+import { useSearchParams } from 'react-router-dom'
 
 const WebinarListingPage = () => {
-    const [webinars, setWebinar] = useState<Webinar[]>(getAllWebinars());
-    // const webinarList = getAllWebinars();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const {data, isLoading} = useQuery({
+      queryKey: ['/admin/webinar', searchParams.values], 
+      queryFn: () => getAllWebinars(getListOptionsFromSearchParams(searchParams))
+    })
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const value = e.currentTarget.value;
         if(value){
-            setWebinar(searchWebinar(value))
+            setSearchParams({search: value})
+        }else{
+            setSearchParams({})
         }
     }
     return (
@@ -24,12 +30,12 @@ const WebinarListingPage = () => {
                 <Typography as="p" className='max-w-3xl text-center'>Register now and unlock a world of knowledge designed to elevate your engineering skills and propel your career forward!</Typography>
 
                 <div className='flex items-center justify-center w-full'>
-                    <Input className='w-full max-w-sm' placeholder='Search Webinars...' onChange={handleSearch} />
+                    <Input className='w-full max-w-sm' placeholder='Search Webinars...' onChange={handleSearch} value={searchParams.get('search')||''} />
                 </div>
             </div>
             <section className='py-20'>
                 <div className='container'>
-                    <WebinarGridList webinarList={webinars} />
+                    <WebinarGridList loading={isLoading} webinarList={data?.docs||[]} />
                 </div>
             </section>
         </>

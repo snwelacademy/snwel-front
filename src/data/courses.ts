@@ -15,14 +15,15 @@ const generateCurriculam = (count: number) => {
 
 const courseData: Course[] = [
   {
-    id: "jhbjhd",
+    _id: "jhbjhd",
+    slug: "",
     title: "Piping Engineering",
     image: "/assets/images/piping-design.jpg",
     shortDescription: "Master the core concepts",
     description:
       "This course provides a comprehensive introduction to piping design principles, covering pipe materials, components, codes and standards, and design calculations.",
     courseDuration: "40",
-    category: ["piping"],
+    categories: ["piping"],
     difficulty: "Beginner",
     language: ["English"],
     assessment: "Snwel Academy Exam",
@@ -45,14 +46,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(10)
   },
   {
-    id: "iuyiwe",
+    _id: "iuyiwe",
+    slug: "",
     title: "Advanced Stress Analysis for Piping Systems",
     shortDescription: "In-depth analysis techniques",
     image: "/assets/images/advanced-stress-anlysis-piping-system.jpg",
     description:
       "This advanced course delves into stress analysis methods for piping systems, including finite element analysis (FEA) and fatigue analysis.",
     courseDuration: "30",
-    category: ["piping"],
+    categories: ["piping"],
     difficulty: "Intermediate",
     language: ["English"],
     assessment: "Project & Case Studies",
@@ -75,14 +77,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(5)
   },
   {
-    id: "iuy",
+    _id: "iuy",
+    slug: "",
     title: "SP3D for Piping Design and Modeling",
     shortDescription: "Industry-standard software",
     image: "/assets/images/sp3d.jpg",
     description:
       "Learn to utilize SP3D software effectively for creating piping models, generating bills of materials, and clash detection.",
     courseDuration: "45",
-    category: ["piping", "software"],
+    categories: ["piping", "software"],
     difficulty: "Intermediate",
     language: ["English"],
     assessment: "Software Proficiency Test",
@@ -105,14 +108,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(7)
   },
   {
-    id: "iu",
+    _id: "iu",
+    slug: "",
     title: "Building Design and Analysis with Revit BIM",
     shortDescription: "BIM for civil engineering",
     image: "/assets/images/bim.jpg",
     description:
       "This course equips you with the skills to use Revit BIM software for building design, modeling, and structural analysis.",
     courseDuration: "50",
-    category: ["civil_strl", "software"],
+    categories: ["civil_strl", "software"],
     difficulty: "Intermediate",
     language: ["English"],
     assessment: "Project & Final Exam",
@@ -127,14 +131,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(11)
   },
   {
-    id: "uysdfa",
+    _id: "uysdfa",
+    slug: "",
     title: "SolidWorks for Mechanical Design",
     image: "/assets/images/solidworks.jpg",
     shortDescription: "3D modeling and design",
     description:
       "Master the use of SolidWorks software for creating 3D models, performing simulations, and generating manufacturing drawings.",
     courseDuration: "40",
-    category: ["mechanical", "software"],
+    categories: ["mechanical", "software"],
     difficulty: "Intermediate",
     language: ["English", "Hindi"],
     assessment: "Project & Software Skills Test",
@@ -149,14 +154,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(3)
   },
   {
-    id: "uihsa",
+    _id: "uihsa",
+    slug: "",
     title: "Process Design Essentials for Chemical Engineers",
     image: "/assets/images/chemical.jpg",
     shortDescription: "Chemical plant design principles",
     description:
       "This course introduces you to the fundamental concepts of process design for chemical plants, covering equipment selection, process flowsheet development, and economic evaluation.",
     courseDuration: "35",
-    category: ["chemical"],
+    categories: ["chemical"],
     difficulty: "Beginner",
     language: ["English"],
     assessment: "Assignments & Final Exam",
@@ -171,14 +177,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(7)
   },
   {
-    id: "uiicb",
+    _id: "uiicb",
+    slug: "",
     title: "Intelligent P&IDs for Process Automation",
     shortDescription: "Interactive P&ID creation",
     image: "/assets/images/p&ids.jpg",
     description:
       "Learn to create intelligent process and instrumentation diagrams (P&IDs) using specialized software for enhanced process automation.",
     courseDuration: "25",
-    category: ["chemical", "software"],
+    categories: ["chemical", "software"],
     difficulty: "Intermediate",
     language: ["English"],
     assessment: "Software Proficiency Test",
@@ -193,14 +200,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(9)
   },
   {
-    id: "moijovd",
+    _id: "moijovd",
+    slug: "",
     title: "HVAC Design and System Selection",
     image: "/assets/images/hvac.jpg",
     shortDescription: "Comfort control for buildings",
     description:
       "Gain expertise in designing and selecting HVAC systems for various building types, ensuring optimal comfort and energy efficiency.",
     courseDuration: "30",
-    category: ["mechanical"],
+    categories: ["mechanical"],
     difficulty: "Intermediate",
     language: ["English", "Bengali"],
     assessment: "Project & Final Exam",
@@ -215,14 +223,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(6)
   },
   {
-    id: "kjnvds",
+    _id: "kjnvds",
+    slug: "",
     title: "STAAD.Pro for Structural Analysis",
     image: "/assets/images/staad.jpg",
     shortDescription: "Finite element analysis software",
     description:
       "Master the use of STAAD.Pro software for structural analysis of buildings, bridges, and other civil engineering structures.",
     courseDuration: "40",
-    category: ["civil_strl", "software"],
+    categories: ["civil_strl", "software"],
     difficulty: "Intermediate",
     language: ["English"],
     assessment: "Project & Software Skills Test",
@@ -237,14 +246,15 @@ const courseData: Course[] = [
     curriculum: generateCurriculam(4)
   },
   {
-    id: "kjnvds",
+    _id: "kjnvds",
+    slug: "",
     title: "Introduction to Instrumentation and Control",
     image: "/assets/images/process-control.jpg",
     shortDescription: "Fundamentals of process control",
     description:
       "This course provides a foundational understanding of instrumentation and control principles used in various industrial processes.",
     courseDuration: "20",
-    category: ["ei"],
+    categories: ["ei"],
     difficulty: "Beginner",
     language: ["English"],
     assessment: "Assignments & Online Quiz",

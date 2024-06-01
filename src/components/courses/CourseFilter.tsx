@@ -4,23 +4,26 @@
 import { Input } from '../ui/input'
 import { SearchIcon } from 'lucide-react'
 import { z } from 'zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormControl, FormField, FormItem } from '../ui/form';
 import CourseCategorySelector from './CourseCategorySelector';
+import { useEffect } from 'react';
 
 
 export type CourseListMode = 'LIST' | 'GRID';
 
 const CourseFilterSchema = z.object({
     search: z.string().optional(),
-    category: z.string().optional()
+    category: z.string().optional(),
+    isPremium: z.boolean().optional()
 })
 
 export type CourseFilterData  = z.infer<typeof CourseFilterSchema>
 
 const CourseFilter = ({
     value,
+    onChange
 }: {
     value?: z.infer<typeof CourseFilterSchema>,
     onChange?: (value: z.infer<typeof CourseFilterSchema>) => void
@@ -30,26 +33,12 @@ const CourseFilter = ({
         resolver: zodResolver(CourseFilterSchema),
         defaultValues: { ...value }
     });
+    const watchFields = useWatch({ control: form.control });
 
-    // const handleSubmit = (value: z.infer<typeof CourseFilterSchema>) => {
-    //     console.log("BValue", {value})
-    //     onChange?.(value)
-    // }
-
-    // useEffect(() => {
-    //     form.handleSubmit(handleSubmit)()
-    //     form.trigger();
-    // }, [])
-
-    // useEffect(() => {
-    //     if(value){
-    //         for (const key in value) {
-    //             const val = value[key]
-    //             if()
-    //             form.setValue(key as any, value[key] as any || '')
-    //         }
-    //     }
-    // }, [value])
+    useEffect(() => {
+        onChange?.(watchFields)
+        console.log({watchFields})
+    }, [watchFields.category, watchFields.search])
     
     return (
         <Form {...form}>

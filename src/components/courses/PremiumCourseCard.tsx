@@ -5,6 +5,7 @@ import { Button } from '../ui/button'
 import { ArrowRight } from 'lucide-react'
 import EnrollCourseModal from './EnrollCourseModal';
 import { Link } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 const PremiumCourseCard = ({
     className,
@@ -19,8 +20,8 @@ const PremiumCourseCard = ({
     <div className={cn([
         'rounded-2xl relative w-full aspect-square shadow-2xl hover:shadow-none transition duration-300',
         {
-            'bg-primary': course.appearence?.themeColor,
-            "text-primary-foreground": course.appearence?.forgroundColor
+            'bg-primary': !course.appearence?.themeColor,
+            "text-primary-foreground": !course.appearence?.forgroundColor
         },
         className
     ])}
@@ -33,15 +34,15 @@ const PremiumCourseCard = ({
         <img className='absolute w-[70%] right-0 bottom-0 ' src={courseImage} />
         <div className='absolute top-0 left-0 w-full h-full p-5'>
             {
-                course.category.map(ct => {
-                    return <Typography as="lable" className={'tracking-wider uppercase text-xs'}>{ct}</Typography>
+                course.categories.map(ct => {
+                    return <Typography key={nanoid()} as="lable" className={'tracking-wider uppercase text-xs'}>{ct.title}</Typography>
                 })
             }
-            <Link className='block' to={`/courses/${course.id}`}><Typography as="h2" className='text-3xl'>{course.title}</Typography></Link>
+            <Link className='block' to={`/courses/${course._id}`}><Typography as="h2" className='text-3xl'>{course.title}</Typography></Link>
         </div>
         <EnrollCourseModal
         trigger={<Button className='absolute left-5 bottom-5 bg-amber-500 hover:bg-amber-600 text-white'><span>ENROLL NOW</span><ArrowRight/></Button>}
-        courseId={course.id}
+        courseId={course._id}
          />
     </div>
   )

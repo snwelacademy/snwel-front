@@ -6,7 +6,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { getAllCourseCategories } from "@/services/caourse-category-service";
+import { getAllCourseCategories } from "@/services/admin/course-category-service";
+import { useQuery } from "@tanstack/react-query";
 
 const CourseCategorySelector = ({
     value,
@@ -15,7 +16,10 @@ const CourseCategorySelector = ({
     onChange?: (value?: string) => void,
     value?: string
 }) => {
-    const courseCategories = getAllCourseCategories();
+    const { data: categories } = useQuery({
+        queryKey: ['/admin/course-category'],
+        queryFn: () => getAllCourseCategories()
+      });
     return (
         <Select onValueChange={onChange} defaultValue={value}>
             <SelectTrigger className="w-full">
@@ -23,8 +27,8 @@ const CourseCategorySelector = ({
             </SelectTrigger>
             <SelectContent>
                 {
-                    courseCategories.map(cs => {
-                        return  <SelectItem value={cs.id}>{cs.title}</SelectItem>
+                    categories?.docs.map(cs => {
+                        return  <SelectItem className="cursor-pointer" value={cs.slug}>{cs.title}</SelectItem>
                     })
                 }
             </SelectContent>

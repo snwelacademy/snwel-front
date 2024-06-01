@@ -3,10 +3,11 @@ import Logo from '../shared/Logo'
 import Typography from '../typography'
 import { Facebook, LinkedinIcon, X } from 'lucide-react'
 import { Button } from '../ui/button'
-import { getAllCourseCategories } from '@/services/caourse-category-service'
 import { nanoid } from 'nanoid'
 import NewsLetterForm from '../shared/NewsLetterForm'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { getAllCourseCategories } from '@/services/admin/course-category-service'
 
 const socialIcons: { link: string, icon: ReactNode }[] = [
     {
@@ -49,6 +50,10 @@ const importantLink: { title: string, link: string }[] = [
 
 
 const Footer = () => {
+    const { data } = useQuery({
+        queryKey: ['admin/course-category'],
+        queryFn: () => getAllCourseCategories()
+    })
     return (
         <div className='grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-4 gap-5 py-10 container mx-auto text-white'>
             <div className='space-y-3'>
@@ -68,8 +73,8 @@ const Footer = () => {
                 <Typography as="h4" className='' >Categories</Typography>
                 <div className='flex flex-col items-start'>
                     {
-                        getAllCourseCategories().map(ctg => {
-                            return <Link to={`/courses/?category=${ctg.id}`}><Button className='py-0' key={nanoid()} variant={'link'}>{ctg.title}</Button></Link>
+                        data?.docs.map(ctg => {
+                            return <Link to={`/courses/?category=${ctg.slug}`}><Button className='py-0' key={nanoid()} variant={'link'}>{ctg.title}</Button></Link>
                         })
                     }
                 </div>

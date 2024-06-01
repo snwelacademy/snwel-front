@@ -1,11 +1,14 @@
+import { CourseCategory } from ".";
+
 export type Course = {
-    id: string,
+    _id: string,
     image?: string,
     title: string;
     shortDescription: string;
+    slug: string,
     description: string;
     courseDuration: string;
-    category: string[];
+    categories: CourseCategory[];
     difficulty: string;
     language: string[];
     assessment: string;

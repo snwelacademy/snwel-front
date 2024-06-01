@@ -28,7 +28,7 @@ const HighlightPan = () => {
                         <Typography as="h2" className='text-primary'>
                             {item.title}
                         </Typography>
-                        <Typography as="lable" className='text-muted-foreground'>
+                        <Typography as="label" className='text-muted-foreground'>
                             {item.content}
                         </Typography>
 

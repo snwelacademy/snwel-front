@@ -2,25 +2,29 @@
 import CourseCard from '@/components/courses/CourseCard'
 import CourseFilter, { CourseFilterData } from '@/components/courses/CourseFilter'
 import PageHeader from '@/components/shared/PageHeader'
-import { getAllCourses, getCourseByCategory } from '@/services/course-service'
+import { useListOptions } from '@/hooks/useListOption'
+import { getAllCourses } from '@/services/admin/admin-course-service'
+import { useQuery } from '@tanstack/react-query'
 import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
 
 const CourseListPage = () => {
-    const [courses, setCourses] = useState(getAllCourses());
     const [courseFilter, setFilter] = useState<CourseFilterData>();
-    const loc = useLocation()
+    const [options] = useListOptions()
+    const {data, isLoading} = useQuery({
+        queryKey: ['/admin/course', options.filter],
+        queryFn: () => {
+            console.log("Fetch courses", options);
+            return getAllCourses(options)
+        },
+        enabled: Boolean(options)
+      })
+    
 
-    useEffect(() => {
-        const category = new URLSearchParams(location.search).get('category');
-        console.log({category})
-        if (category) {
-            setFilter({ category });
-            setCourses(_crs => getCourseByCategory(category))
-        }
-    }, [loc])
-
+      useEffect(() => {
+        console.log({courseFilter})
+      }, [courseFilter])
+      
 
     return (
         <>
@@ -34,7 +38,7 @@ const CourseListPage = () => {
 
                     <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 items-center justify-items-center mt-10'>
                         {
-                            courses.map(cs => {
+                            data?.docs.map(cs => {
                                 return <div className='w-full' key={nanoid()}><CourseCard course={cs} key={nanoid()} /></div>
                             })
                         }

@@ -1,4 +1,4 @@
-import { getPopularCourses } from '@/services/course-service';
+
 import Autoplay from "embla-carousel-autoplay"
 import {
     Carousel,
@@ -8,9 +8,20 @@ import {
     // CarouselPrevious,
 } from "@/components/ui/carousel"
 import CourseCard from './CourseCard';
+import { useQuery } from '@tanstack/react-query';
+import { getAllCourses } from '@/services/admin/admin-course-service';
+import { useListOptions } from '@/hooks/useListOption';
+import Loader from '../Loader';
 
 const PopularCourseSlider = () => {
-    const courses = getPopularCourses()
+    const [options] = useListOptions()
+    const {data, isLoading} = useQuery({
+        queryKey: ['/admin/course', {isPopular: true}], 
+        queryFn: () => {
+            return getAllCourses({filter: {isPopular: true}})
+        },
+        enabled: Boolean(options)
+      })
     return (
         <div>
             <Carousel
@@ -25,12 +36,17 @@ const PopularCourseSlider = () => {
               ]}
             >
                 <CarouselContent>
-                    {courses.map((courseData) => (
-                        <CarouselItem className='md:basis-1/2 lg:basis-1/3' key={courseData.id}>
-                            <CourseCard course={courseData} />
+                  
+                    {
+                    isLoading ? 
+                    <Loader type="default" />:
+                    data?.docs.map((courseData) => (
+                        <CarouselItem className='md:basis-1/2 lg:basis-1/3' key={courseData._id}>
+                            <CourseCard course={courseData}  />
                         </CarouselItem>
                     ))
                     }
+        
                 </CarouselContent>
                 {/* <CarouselPrevious />
                 <CarouselNext /> */}

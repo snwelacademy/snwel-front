@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 import JoinCourseForm from '../shared/JoinCourseForm'
 
@@ -9,12 +9,13 @@ const EnrollCourseModal = ({
     trigger: ReactNode,
     courseId: string
 }) => {
+  const [open, setOpen] = useState(false)
 
   return (
-    <Dialog>
-        <DialogTrigger asChild>{trigger}</DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen} >
+        <DialogTrigger asChild >{trigger}</DialogTrigger>
         <DialogContent>
-            <JoinCourseForm value={{name: '', email: '', course: courseId}} />
+            <JoinCourseForm value={{name: '', email: '', courseId, phone: ''}} onClose={() => setOpen(false)} />
         </DialogContent>
     </Dialog>
   )

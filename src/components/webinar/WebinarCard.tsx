@@ -18,7 +18,7 @@ const WebinarCard = ({
             </div>
 
             <div className='p-3 space-y-3'>
-                <Typography as="h3" className='line-clamp-2 group-hover:text-primary duration-200 transition-all cursor-pointer'>{webinar.title}</Typography>
+            <Link className='block' to={`/webinars/${webinar.slug}`} ><Typography as="h3" className='line-clamp-2 group-hover:text-primary duration-200 transition-all cursor-pointer'>{webinar.title}</Typography></Link>
                 {/* <Typography as="p" className='line-clamp-2' >{webinar.shortDescription}</Typography> */}
                
                 <div className='flex items-center justify-between'>

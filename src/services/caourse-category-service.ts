@@ -5,6 +5,6 @@ export function getAllCourseCategories() {
 }
 
 export function getCategoryById(id: string){
-    return coursCategories.find(ct => ct.id === id)
+    return coursCategories.find(ct => ct._id === id)
 }
 

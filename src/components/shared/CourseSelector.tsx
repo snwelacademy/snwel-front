@@ -6,7 +6,11 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { getAllCourses } from '@/services/course-service';
+import { getListOptionsFromSearchParams } from "@/lib/utils";
+import { getAllCourses } from "@/services/admin/admin-course-service";
+import { nanoid } from "nanoid";
+import { useQuery } from '@tanstack/react-query'
+import { useSearchParams } from "react-router-dom";
 
 const CourseSelector = ({
     value,
@@ -15,16 +19,21 @@ const CourseSelector = ({
     onChange?: (value?: string) => void,
     value?: string
 }) => {
-    const courses = getAllCourses();
+    const [searchParams] = useSearchParams();
+    const {data} = useQuery({
+        queryKey: ['client/courses'],
+        queryFn:  () => getAllCourses(getListOptionsFromSearchParams(searchParams))
+    })
     return (
         <Select onValueChange={onChange} defaultValue={value}>
+            
             <SelectTrigger className="w-full">
                 <SelectValue placeholder="Choose Courses"/>
             </SelectTrigger>
             <SelectContent>
                 {
-                    courses.map(cs => {
-                        return  <SelectItem value={cs.id}>{cs.title}</SelectItem>
+                    data?.docs.map(cs => {
+                        return  <SelectItem key={nanoid()} value={cs._id}>{cs.title}</SelectItem>
                     })
                 }
             </SelectContent>

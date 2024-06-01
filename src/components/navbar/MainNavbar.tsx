@@ -10,13 +10,15 @@ import {
 } from "@/components/ui/navigation-menu"
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import Logo from '../shared/Logo';
-import menus, { Menu } from '@/data/menu';
+import  { Menu } from '@/data/menu';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { SearchIcon, ShoppingBagIcon } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import MobileNavbar from './MobileNavbar';
+import { useQuery } from '@tanstack/react-query';
+import { getAllCourseCategories } from '@/services/admin/course-category-service';
 
 // const CategoryMenu = ({
 //   menu
@@ -84,6 +86,10 @@ const SimpleNavlink = ({ menu }: { menu: Menu }) => {
 
 
 const MainNavbar = () => {
+  const { data: categories } = useQuery({
+    queryKey: ['/admin/course-category'],
+    queryFn: () => getAllCourseCategories()
+  });
   return (
     <div className='flex items-center justify-between gap-4 py-3 px-2 md:px-10 bg-background'>
 
@@ -94,14 +100,17 @@ const MainNavbar = () => {
       <div className='hidden md:block'>
         <NavigationMenu>
           <NavigationMenuList>
-            {
-              menus.map(m => {
-                return !m.children || m.children.length <= 0 ?
-                  <SimpleNavlink menu={m} key={nanoid()} />
-                  : <MenuItemChildren menu={m} key={nanoid()} />
-              })
-            }
 
+            <SimpleNavlink menu={{label: "Home", link: "/"}} />
+            <MenuItemChildren menu={{
+              label: "Courses", 
+              link: "/courses",
+              children: categories?.docs.map(ctg => ({label: ctg.title, link: `/courses/?category=${ctg.slug}`}))
+              }} key={nanoid()} />
+            <SimpleNavlink menu={{label: "About", link: "/about"}} />
+            <SimpleNavlink menu={{label: "Contact", link: "/contact"}} />
+            <SimpleNavlink menu={{label: "Blogs", link: "/blogs"}} />
+            <SimpleNavlink menu={{label: "Webinars", link: "/webinars"}} />
           </NavigationMenuList>
         </NavigationMenu>
       </div>

@@ -2,9 +2,7 @@ import PageHeader from '@/components/shared/PageHeader';
 import Typography from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { getCurrencySymbol } from '@/lib/utils';
-import { getCourse } from '@/services/course-service';
-import { Course } from '@/types/Course';
-import { useEffect, useState } from 'react'
+import { getCourseBySlug } from '@/services/course-service';
 import { useParams } from 'react-router-dom'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Book, Container } from 'lucide-react';
@@ -12,23 +10,15 @@ import CourseInfoSidebar from '@/components/courses/CourseInfoSidebar';
 import CourseCurriculum from '@/components/courses/CourseCurriculum';
 import CourseDescription from '@/components/courses/CourseDescription';
 import EnrollCourseModal from '@/components/courses/EnrollCourseModal';
+import { useQuery } from '@tanstack/react-query';
 
 
 const SingleCoursePage = () => {
-    const [course, setCourse] = useState<Course>();
-
-
-    const { courseId } = useParams();
-
-
-    useEffect(() => {
-        if (courseId) {
-            const course = getCourse(courseId);
-            if (!course) return setCourse(undefined);
-            return setCourse(course);
-        }
-    }, [courseId])
-
+    const { slug } = useParams();
+    const {data:course} = useQuery({
+        queryKey: ["course",slug],
+        queryFn: () => getCourseBySlug(slug||"")
+    })
     if (!course) {
         return <PageHeader title='No Course Found!' />
     }
@@ -55,7 +45,7 @@ const SingleCoursePage = () => {
 
                                 <div className='flex items-center justify-center gap-2'>
                                     <span className='p-2 rounded-md bg-primary text-primary-foreground'>{getCurrencySymbol(course.currency)} {course.price}</span>
-                                    <EnrollCourseModal trigger={<Button>Enroll Now</Button>} courseId={course.id} />
+                                    <EnrollCourseModal trigger={<Button>Enroll Now</Button>} courseId={course._id} />
                                 </div>
                             </div>
                         </div>
@@ -65,19 +55,19 @@ const SingleCoursePage = () => {
 
             <section className='mb-20'>
                 <div className='container mx-auto flex gap-10 px-4 flex-col lg:flex-row relative'>
-                    <Tabs defaultValue="account" className="w-full"  value='curriculum'>
+                    <Tabs defaultValue="curriculum" className="w-full">
                         <TabsList className='w-full justify-start' >
                             <TabsTrigger value="curriculum" defaultChecked><Book className='w-4 h-4 mr-2' /> <span>Curriculum</span></TabsTrigger>
                             <TabsTrigger value="about"><Container className='w-4 h-4 mr-2' /> <span>About</span></TabsTrigger>
                         </TabsList>
                         <div className='mt-10'>
-                            <TabsContent defaultChecked value="curriculum"><CourseCurriculum curriculum={course.curriculum} /></TabsContent>
+                            <TabsContent value="curriculum"><CourseCurriculum curriculum={course.curriculum} /></TabsContent>
                             <TabsContent value="about"><CourseDescription desc={course.description}/></TabsContent>
                         </div>
                     </Tabs>
 
                     <div className='max-w-xs w-full'>
-                        <Typography as="h2" className='mb-3' >Course Info</Typography>
+                        <Typography as="h2" className='mb-3'>Course Info</Typography>
                         <CourseInfoSidebar course={course} />
                     </div>
                 </div>
