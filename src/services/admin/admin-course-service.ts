@@ -52,7 +52,7 @@ export async function deleteCourse (courseId: string) {
 }
 export async function getCourse (courseId: string) {
     try {
-        const res = await protectedApi.get<any, AxiosResponse<ApiResponse<Course>>>(`/course/byId/${courseId}`);
+        const res = await protectedApi.get<any, AxiosResponse<ApiResponse<Course>>>(`/course/${courseId}`);
         const data = res.data.data;
         return data;
     } catch (error) {
