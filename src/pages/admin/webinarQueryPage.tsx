@@ -1,7 +1,6 @@
 import BreadCrumb from '@/components/BreadCrumb'
 import Loader from '@/components/Loader'
 import { DataTable } from '@/components/shared/DataTable'
-import { columns } from '@/components/tables/course-query-table/columns'
 import { Heading } from '@/components/ui/Heading'
 import { buttonVariants } from '@/components/ui/button'
 import { cn, getListOptionsFromSearchParams, getTotalPages } from '@/lib/utils'
@@ -48,8 +47,8 @@ const WebinarPage = () => {
         : <DataTable
         searchKey="title"
         pageNo={data?.currentPage||1}
-        columns={columns}
-        totalUsers={totalUsers}
+        columns={[]}
+        total={data?.total||0}
         data={data?.docs||[]}
         pageCount={data?.total ? getTotalPages(data.total, data.limit): 0}
       />

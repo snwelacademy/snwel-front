@@ -24,16 +24,16 @@ const BaseTrigger = () => {
     </div>
 }
 
-const PreviewImage = ({ url }: { url?: string }) => {
-    return <div className="w-full rounded-2xl overflow-hidden">
-        <img className="h-auto max-w-full" src={url} />
-    </div>
-}
+// const PreviewImage = ({ url }: { url?: string }) => {
+//     return <div className="w-full rounded-2xl overflow-hidden">
+//         <img className="h-auto max-w-full" src={url} />
+//     </div>
+// }
 
 const FilesLoading = () => {
     return <div className="max-w-4xl w-full grid grid-cols-4 gap-3 items-center justify-items-center">
         {
-            Array(4).map(i => {
+            Array(4).map(() => {
                 return <Skeleton className="aspect-square rounded-2xl" />
             })
         }

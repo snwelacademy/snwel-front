@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
     Drawer,
-    DrawerClose,
     DrawerContent,
     DrawerDescription,
-    DrawerFooter,
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import { Button } from "../ui/button"
 import { UpdateCourseCategory } from "@/types"
 import CourseCategoryForm from "./MutateCategoryForm"
 import { ReactNode } from "react"

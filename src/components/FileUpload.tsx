@@ -3,13 +3,12 @@ import { uploadFile } from '@/services/file';
 import React, { useState } from 'react'
 import { useToast } from './ui/use-toast';
 import { FileUploadResponse } from '@/types/ApiResponses';
-import Loader from './Loader';
 import { Loader2Icon } from 'lucide-react';
 
 
 const FileUpload = ({ onUpload }: { onUpload?: (response?: FileUploadResponse) => void}) => {
     const [loading, setLoading] = useState(false);
-    const [previewImage, setPreviewImage] = useState<string | undefined>();
+    const [, setPreviewImage] = useState<string | undefined>();
     const {toast} = useToast()
 
     const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {

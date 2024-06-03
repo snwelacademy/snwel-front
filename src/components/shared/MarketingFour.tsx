@@ -1,5 +1,4 @@
 import { getPublicImage } from '@/lib/utils'
-import React from 'react'
 import Typography from '../typography'
 
 const content = [

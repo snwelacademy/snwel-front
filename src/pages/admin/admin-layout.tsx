@@ -2,8 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ProtectedRoute.js
 
-
-import Loader from '@/components/Loader';
 import PageLoader from '@/components/PageLoader';
 import { useAuth } from '@/components/auth/AuthProvider';
 import Sidebar from '@/components/layout/Sidebar';

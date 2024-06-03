@@ -4,12 +4,10 @@ import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/com
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { login } from "@/services/auth-service";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/components/auth/AuthProvider";
 
@@ -19,7 +17,7 @@ const CredentialSchema = z.object({
 })
 
 export default function LoginPage() {
-  const {signIn, currentUser} = useAuth();
+  const {signIn} = useAuth();
   const navigate = useNavigate()
   const form = useForm({
     defaultValues: { email: '', password: '' },

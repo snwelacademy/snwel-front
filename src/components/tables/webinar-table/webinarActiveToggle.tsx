@@ -2,7 +2,7 @@
 import { Switch } from '@/components/ui/switch'
 import { useToast } from '@/components/ui/use-toast'
 import { updateWebinar } from '@/services/admin/webinar-service'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 
 const WebinarActiveToggle = ({

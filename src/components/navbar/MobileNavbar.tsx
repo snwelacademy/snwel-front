@@ -11,13 +11,18 @@ import {
 import { Button } from '../ui/button'
 import { MenuIcon } from 'lucide-react'
 import Logo from "../shared/Logo"
-import menus from "@/data/menu"
 import { nanoid } from "nanoid"
 import { Link } from "react-router-dom"
 import { constants } from "@/config/constants"
+import { useQuery } from "@tanstack/react-query"
+import { getAllCourseCategories } from "@/services/admin/course-category-service"
 
 
 const MobileNavbar = () => {
+    const { data: categories } = useQuery({
+        queryKey: ['/admin/course-category'],
+        queryFn: () => getAllCourseCategories()
+    });
     return (
         <Drawer direction="left" shouldScaleBackground>
             <DrawerTrigger asChild ><Button><MenuIcon /></Button></DrawerTrigger>
@@ -27,18 +32,33 @@ const MobileNavbar = () => {
                     <DrawerTitle><Logo /></DrawerTitle>
                 </DrawerHeader>
                 <div className="h-full flex  flex-col items-center justify-center">
+                    <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
+                        <Link to="/" >Home</Link>
+                    </div>
                     {
-                        menus.map(menu => {
+                        categories?.docs.map(ctg => {
                             return <DrawerClose key={nanoid()}>
-                             <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
-                                    <Link to={menu.link || '#'} className="" key={nanoid()} >
+                                <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
+                                    <Link to={`/category/${ctg.slug}` || '#'} className="" key={nanoid()} >
 
-                                        {menu.label}
+                                        {ctg.title}
                                     </Link>
-                            </div>
-                                </DrawerClose>
+                                </div>
+                            </DrawerClose>
                         })
                     }
+                    <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
+                        <Link to="/about" >About</Link>
+                    </div>
+                    <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
+                        <Link to="/contact" >Contact</Link>
+                    </div>
+                    <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
+                        <Link to="/blogs" >Blogs</Link>
+                    </div>
+                    <div className="px-4 py-4 text-3xl font-extralight" key={nanoid()}>
+                        <Link to="/webinars" >Webinars</Link>
+                    </div>
                 </div>
                 <DrawerFooter>
                     <DrawerClose>

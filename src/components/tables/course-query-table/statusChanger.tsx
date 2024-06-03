@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useToast } from '@/components/ui/use-toast'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
     Select,
     SelectContent,

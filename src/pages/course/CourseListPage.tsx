@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 const CourseListPage = () => {
     const [courseFilter, setFilter] = useState<CourseFilterData>();
     const [options] = useListOptions()
-    const {data, isLoading} = useQuery({
+    const {data} = useQuery({
         queryKey: ['/admin/course', options.filter],
         queryFn: () => {
             console.log("Fetch courses", options);

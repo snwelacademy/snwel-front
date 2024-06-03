@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getMe, login } from '@/services/auth-service';
 import { CurrentUser } from '@/types/User';
 import { useLocalStorage } from '@uidotdev/usehooks';
-import React, { createContext, useContext, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { createContext, useContext, useEffect } from 'react';
 
 type AuthCredentials = {
     email: string,

@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/navigation-menu"
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import Logo from '../shared/Logo';
-import  { Menu } from '@/data/menu';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
@@ -19,6 +18,7 @@ import { nanoid } from 'nanoid';
 import MobileNavbar from './MobileNavbar';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCourseCategories } from '@/services/admin/course-category-service';
+import { Menu } from '@/data/menu';
 
 // const CategoryMenu = ({
 //   menu

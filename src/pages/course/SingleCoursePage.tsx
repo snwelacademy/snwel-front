@@ -2,7 +2,6 @@ import PageHeader from '@/components/shared/PageHeader';
 import Typography from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { getCurrencySymbol } from '@/lib/utils';
-import { getCourseBySlug } from '@/services/course-service';
 import { useParams } from 'react-router-dom'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Book, Container } from 'lucide-react';
@@ -11,13 +10,14 @@ import CourseCurriculum from '@/components/courses/CourseCurriculum';
 import CourseDescription from '@/components/courses/CourseDescription';
 import EnrollCourseModal from '@/components/courses/EnrollCourseModal';
 import { useQuery } from '@tanstack/react-query';
+import { getCourse } from '@/services/admin/admin-course-service';
 
 
 const SingleCoursePage = () => {
     const { slug } = useParams();
     const {data:course} = useQuery({
         queryKey: ["course",slug],
-        queryFn: () => getCourseBySlug(slug||"")
+        queryFn: () => getCourse(slug||"")
     })
     if (!course) {
         return <PageHeader title='No Course Found!' />

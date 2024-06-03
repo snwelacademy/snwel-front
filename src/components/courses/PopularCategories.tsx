@@ -1,4 +1,4 @@
-import { getAllCourseCategories } from '@/services/caourse-category-service'
+
 import Autoplay from "embla-carousel-autoplay"
 import {
     Carousel,
@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/carousel"
 import { LayersIcon } from 'lucide-react';
 import Typography from '../typography';
+import { CourseCategory } from '@/types';
 
 const PopularCategories = () => {
-    const categories = getAllCourseCategories();
+    const categories = [] as CourseCategory[]
     return (
         <div>
             <Carousel
@@ -23,7 +24,7 @@ const PopularCategories = () => {
             >
                 <CarouselContent>
                     {categories.map((courseData) => (
-                        <CarouselItem className='md:basis-1/2 lg:basis-1/3' key={courseData.id}>
+                        <CarouselItem className='md:basis-1/2 lg:basis-1/3' key={courseData._id}>
                             <div className='bg-white rounded-2xl'>
                                 <div className='rounded-2xl bg-primary/10 space-y-3 p-4'>
                                     <span className='w-12 h-12 rounded-full bg-primary flex items-center justify-center'>
