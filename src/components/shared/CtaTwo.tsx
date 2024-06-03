@@ -1,4 +1,5 @@
 
+import EnrollCourseModal from '../courses/EnrollCourseModal'
 import Typography from '../typography'
 import { Button } from '../ui/button'
 
@@ -10,7 +11,7 @@ const CtaTwo = () => {
             <div></div>
             <Typography as={'heroTitle'} className='text-primary-foreground tracking-tight text-center font-black max-w-4xl '>Limited Time Offer: Enroll & Save!</Typography>
             <Typography as={'subtitle'} className='text-primary-foreground leading-relaxed text-center max-w-4xl '>Invest in Your Future at a Discounted Price & Gain Industry-Relevant Expertise. Enroll Now & Save Before This Limited-Time Offer Expires!</Typography>
-            <Button size={'lg'} variant={'secondary'}>Enroll Now!</Button>
+            <EnrollCourseModal trigger={<Button size={'lg'} variant={'secondary'}>Enroll Now!</Button>} courseId={''} />
         </div>
     </div>
   )

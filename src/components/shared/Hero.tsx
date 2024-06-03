@@ -63,12 +63,14 @@ const Hero = () => {
                                             <Typography as={'heroTitle'} className="hero-subtitle mb-16 text-4xl font-black tracking-tight md:text-6xl xl:text-6xl text-primary-foreground text-center">
                                                 Elevate Your Engineering Expertise <br />with Specialized Training
                                             </Typography>
-                                            <div className='space-x-2'>
+                                            <div className='space-x-2 space-y-4'>
+                                                <span className='inline-block'>
                                                 <EnrollCourseModal
                                                 trigger={<Button className='hero-btn-1' size={'lg'} variant={'destructive'}>BUY COURSE</Button>}
                                                 courseId=''
                                                 />
-                                                <Link to="/courses"><Button className='hero-btn-2' size={'lg'} variant={'secondary'}>EXPLORE COURSES</Button></Link>
+                                                </span>
+                                                <Link to="/courses" className=' inline-block'><Button className='hero-btn-2' size={'lg'} variant={'secondary'}>EXPLORE COURSES</Button></Link>
                                             </div>
                                         </div>
                                     </div>

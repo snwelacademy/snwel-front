@@ -25,6 +25,7 @@ const PopularCourseSlider = () => {
     return (
         <div>
             <Carousel
+            
             opts={{
                 loop: true
             }}

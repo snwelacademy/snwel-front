@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import SectionTitle from './SectionTitle'
 import Typography from '../typography'
 import { Button } from '../ui/button'
+import { Link } from 'react-router-dom'
 
 const content: { title: string, desc: string, icon?: ReactNode }[] = [
     {
@@ -33,7 +34,7 @@ const WhyChooseUs = () => {
             <div className='flex justify-center md:block flex-col text-center md:text-start'>
                 <SectionTitle title=' Who We Are: Building Your Engineering Expertise' />
                 <Typography as="p" className='max-w-2xl'>Empower your engineering career with Snwel Academy, your trusted partner for industry-relevant training.</Typography>
-                <Button size="lg" className='mt-5'>Learn More</Button>
+                <Link to="/about"><Button size="lg" className='mt-5'>Learn More</Button></Link>
             </div>
             <div className='space-y-3'>
                 {
