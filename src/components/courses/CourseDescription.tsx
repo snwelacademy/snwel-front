@@ -5,11 +5,9 @@ const CourseDescription = ({
     desc?: string
 }) => {
   return (
-    <div>
-        {
-            desc ? desc : "No Description"
-        }
-    </div>
+    <article className="prose">
+      <div dangerouslySetInnerHTML={{__html: desc||"No Description"}}></div>
+    </article>
   )
 }
 

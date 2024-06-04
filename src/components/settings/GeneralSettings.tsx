@@ -38,7 +38,8 @@ const GeneralSettingForm = () => {
                 contacts: {
                     phone: '',
                     email: ''
-                }
+                },
+                senderEmail: ''
             }
         },
         resolver: zodResolver(GeneralSettingSchema)
@@ -109,6 +110,19 @@ const GeneralSettingForm = () => {
                                             <FormLabel>Email</FormLabel>
                                             <FormControl>
                                                 <Input type="email" placeholder="Email" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="data.senderEmail"
+                                    render={({ field }) => (
+                                        <FormItem className='w-full'>
+                                            <FormLabel>Sender Email</FormLabel>
+                                            <FormControl>
+                                                <Input type="email" placeholder="Sender Email" {...field}  />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>

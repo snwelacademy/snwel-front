@@ -6,7 +6,7 @@ export type Course = {
     title: string;
     shortDescription: string;
     slug: string,
-    description: string;
+    text: string;
     courseDuration: string;
     categories: CourseCategory[];
     difficulty: string;

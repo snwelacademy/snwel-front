@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
-import { useForm, useWatch } from 'react-hook-form'
+import { useFieldArray, useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Card, CardContent, CardHeader } from '../ui/card'
@@ -41,7 +41,8 @@ const createCourseSchema = z.object({
     images: z.object({
         promotionalCardImage: z.string().optional(),
         iconImage: z.string().optional()
-    }).optional()
+    }).optional(),
+    curriculum: z.array(z.object({ title: z.string(), duration: z.string() })).default([])
 })
 
 
@@ -55,11 +56,13 @@ const MutateCourse = ({ courseData }: { courseData?: Course }) => {
             difficulty: 'begginer',
             price: 0,
             isPremium: false,
-            isPopular: false
+            isPopular: false,
+            curriculum: []
         },
         resolver: zodResolver(createCourseSchema)
     })
     const Watch = useWatch({ control: form.control });
+    const { fields, append } = useFieldArray({ name: "curriculum", control: form.control })
     const handleSubmit = async (value: z.infer<typeof createCourseSchema>) => {
         try {
             setLoading(true);
@@ -86,22 +89,23 @@ const MutateCourse = ({ courseData }: { courseData?: Course }) => {
         if (Watch.title) {
             form.setValue('slug', slugify(Watch.title, { lower: true }));
         }
+
     }, [Watch.title])
 
     useEffect(() => {
         if (courseData) {
             Object.keys(courseData).map((key: any) => {
-               if(key === "categories"){
-                form.setValue(key, courseData['categories'].map(ctg => ctg._id));
-               }else{
-                form.setValue(key, courseData[key as keyof Course]);
-               }
+                if (key === "categories") {
+                    form.setValue(key, courseData['categories'].map(ctg => ctg._id));
+                } else {
+                    form.setValue(key, courseData[key as keyof Course]);
+                }
             });
         }
     }, [courseData])
 
     useEffect(() => {
-      console.log("Error", form.formState.errors)
+        console.log("Error", form.formState.errors)
     }, [form.formState.errors])
 
 
@@ -252,87 +256,87 @@ const MutateCourse = ({ courseData }: { courseData?: Course }) => {
                                 </div>
 
                                 <div className="flex items-center gap-5 ">
-                                <FormField
-                                    control={form.control}
-                                    name="certificate"
-                                    render={({ field }) => (
-                                        <FormItem className='w-full flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4'>
+                                    <FormField
+                                        control={form.control}
+                                        name="certificate"
+                                        render={({ field }) => (
+                                            <FormItem className='w-full flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4'>
 
-                                            <FormControl>
-                                                <Checkbox
-                                                    checked={field.value}
-                                                    onCheckedChange={field.onChange}
-                                                />
-                                            </FormControl>
-                                            <div className="space-y-1 leading-none">
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value}
+                                                        onCheckedChange={field.onChange}
+                                                    />
+                                                </FormControl>
+                                                <div className="space-y-1 leading-none">
+                                                    <FormLabel>
+                                                        Certificate
+                                                    </FormLabel>
+
+                                                </div>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="isPremium"
+                                        render={({ field }) => (
+                                            <FormItem className='w-full flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4'>
+
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value}
+                                                        onCheckedChange={field.onChange}
+                                                    />
+                                                </FormControl>
+                                                <div className="space-y-1 leading-none">
+                                                    <FormLabel>
+                                                        Premium Course
+                                                    </FormLabel>
+
+                                                </div>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="isPopular"
+                                        render={({ field }) => (
+                                            <FormItem className='w-full flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4'>
+
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value}
+                                                        onCheckedChange={field.onChange}
+                                                    />
+                                                </FormControl>
+                                                <div className="space-y-1 leading-none">
+                                                    <FormLabel>
+                                                        Mark As Popular
+                                                    </FormLabel>
+
+                                                </div>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="categories"
+                                        render={({ field }) => (
+                                            <FormItem className='w-full items-start space-x-3 space-y-0 rounded-md border p-4'>
                                                 <FormLabel>
-                                                    Certificate
-                                                </FormLabel>
-
-                                            </div>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="isPremium"
-                                    render={({ field }) => (
-                                        <FormItem className='w-full flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4'>
-
-                                            <FormControl>
-                                                <Checkbox
-                                                    checked={field.value}
-                                                    onCheckedChange={field.onChange}
-                                                />
-                                            </FormControl>
-                                            <div className="space-y-1 leading-none">
-                                                <FormLabel>
-                                                    Premium Course
-                                                </FormLabel>
-
-                                            </div>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="isPopular"
-                                    render={({ field }) => (
-                                        <FormItem className='w-full flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4'>
-
-                                            <FormControl>
-                                                <Checkbox
-                                                    checked={field.value}
-                                                    onCheckedChange={field.onChange}
-                                                />
-                                            </FormControl>
-                                            <div className="space-y-1 leading-none">
-                                                <FormLabel>
-                                                    Mark As Popular
-                                                </FormLabel>
-
-                                            </div>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="categories"
-                                    render={({ field }) => (
-                                        <FormItem className='w-full items-start space-x-3 space-y-0 rounded-md border p-4'>
-                                            <FormLabel>
                                                     Categories
                                                 </FormLabel>
-                                            <FormControl>
-                                                <CategorySelectorFormElement {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
+                                                <FormControl>
+                                                    <CategorySelectorFormElement {...field} />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
                                 </div>
 
                                 <div className='flex items-center justify-center gap-5'>
@@ -362,6 +366,50 @@ const MutateCourse = ({ courseData }: { courseData?: Course }) => {
                                             </FormItem>
                                         )}
                                     />
+                                </div>
+
+                                <div className='space-y-3'>
+                                    {fields.map((field, index) => (
+                                        <div className='flex items-center gap-5'>
+                                            <FormField
+                                            control={form.control}
+                                            key={field.id}
+                                            name={`curriculum.${index}.title`}
+                                            render={({ field }) => (
+                                                <FormItem className='flex flex-grow'>
+                                                   
+                                                    <FormControl>
+                                                        <Input placeholder='Title' {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            key={field.id}
+                                            name={`curriculum.${index}.duration`}
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    
+                                                    <FormControl>
+                                                        <Input  placeholder='Duration' type='number' {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        </div>
+                                    ))}
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        className="mt-2"
+                                        onClick={() => append({ title: "", duration: "0" })}
+                                    >
+                                        Add Curriculum
+                                    </Button>
                                 </div>
 
 

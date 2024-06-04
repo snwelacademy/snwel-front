@@ -14,7 +14,7 @@ const CourseCurriculum = ({
     <div className='p-3 md:p-5 lg:p-5 rounded-xl shadow'>
         {
             curriculum.map(cc => {
-                return <div className='flex md:items-center md:justify-between justify-start flex-col md:flex-row gap-3 py-5 border-b last:border-b-0'>
+                return <div className='flex md:items-center md:justify-between justify-start flex-col md:flex-row gap-3 border-b last:border-b-0'>
                     <Typography as="p" className='flex-auto flex items-center gap-2'><Book className='w-4 h-4 text-primary'/><span>{cc.title}</span></Typography>
 
                     <Typography as="p" className='flex items-center gap-2'><Clock className='w-4 h-4 text-primary'/><span>Duration: {cc.duration}</span></Typography>

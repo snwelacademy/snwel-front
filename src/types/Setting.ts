@@ -101,7 +101,8 @@ export const GeneralSettingSchema = SettingSchema.merge(z.object({
         contacts: z.object({
             phone: z.string().optional(),
             email: z.string().optional(),
-        }).optional()
+        }).optional(),
+        senderEmail: z.string(),
     })
 }))
 

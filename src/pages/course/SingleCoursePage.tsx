@@ -62,7 +62,7 @@ const SingleCoursePage = () => {
                         </TabsList>
                         <div className='mt-10'>
                             <TabsContent value="curriculum"><CourseCurriculum curriculum={course.curriculum} /></TabsContent>
-                            <TabsContent value="about"><CourseDescription desc={course.description}/></TabsContent>
+                            <TabsContent value="about"><CourseDescription desc={course.text}/></TabsContent>
                         </div>
                     </Tabs>
 
