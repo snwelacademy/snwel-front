@@ -33,7 +33,10 @@ const SingleCoursePage = () => {
                     </div>
                     <div className='relative md:-translate-y-1/2 px-2 md:px-5 lg:px-10'>
                         <div className='rounded-xl bg-background p-2 md:p-5 lg:p-5 md:shadow-xl'>
-                            <Typography as="h1">{course.title}</Typography>
+                           <div className='flex items-center'>
+                           <Typography className='flex-grow' as="h1">{course.title}</Typography>
+                           <span> <img className='w-10' src={"/assets/images/284-2840858_100-job-guarantee-logo-hd-png-download.png"} /></span>
+                           </div>
 
                             <div className='flex items-start flex-col gap-3 md:flex-row md:items-center mt-3'>
                                 <div className='flex-auto flex gap-3 flex-col md:flex-row md:flex-wrap'>

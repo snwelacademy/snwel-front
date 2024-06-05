@@ -19,6 +19,7 @@ import { useToast } from '../ui/use-toast'
 import { createCourse, updateCourse } from '@/services/admin/admin-course-service'
 import { AfterCourseCreatedModal } from '../modal/AfterCourseCreated'
 import CategorySelectorFormElement from '../course-category/CategorySelector'
+import TimeUnitSelector from '../TimeUnitSelector'
 
 const createCourseSchema = z.object({
     image: z.string().optional(),
@@ -42,7 +43,7 @@ const createCourseSchema = z.object({
         promotionalCardImage: z.string().optional(),
         iconImage: z.string().optional()
     }).optional(),
-    curriculum: z.array(z.object({ title: z.string(), duration: z.string() })).default([])
+    curriculum: z.array(z.object({ title: z.string(), duration: z.string(), unit: z.string().optional() })).default([])
 })
 
 
@@ -394,6 +395,20 @@ const MutateCourse = ({ courseData }: { courseData?: Course }) => {
                                                     
                                                     <FormControl>
                                                         <Input  placeholder='Duration' type='number' {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            key={field.id}
+                                            name={`curriculum.${index}.unit`}
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    
+                                                    <FormControl>
+                                                       <TimeUnitSelector {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>

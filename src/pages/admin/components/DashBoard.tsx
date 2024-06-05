@@ -63,10 +63,10 @@ export default function page() {
                   {
                     revenueLoading ? <Loader type='default' /> :
                       <>
-                        <div className="text-2xl font-bold">{`${getCurrencySymbol(totalRevenue?.currency || '')} ${count?.totalRevenue || 0}`}</div>
-                        <p className="text-xs text-muted-foreground">
+                        <div className="text-2xl font-bold">{`${getCurrencySymbol(totalRevenue?.currency || '')} ${totalRevenue?.amount || 0}`}</div>
+                        {/* <p className="text-xs text-muted-foreground">
                           +20.1% from last month
-                        </p>
+                        </p> */}
                       </>
                   }
                 </CardContent>
@@ -117,9 +117,9 @@ export default function page() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{countLoading ? <Loader type='default' /> : count?.totalEnrollments}</div>
-                  <p className="text-xs text-muted-foreground">
+                  {/* <p className="text-xs text-muted-foreground">
                     +19% from last month
-                  </p>
+                  </p> */}
                 </CardContent>
               </Card>
               <Card>
@@ -142,9 +142,9 @@ export default function page() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{countLoading ? <Loader type='default' /> : count?.totalUsers}</div>
-                  <p className="text-xs text-muted-foreground">
+                  {/* <p className="text-xs text-muted-foreground">
                     +201 since last hour
-                  </p>
+                  </p> */}
                 </CardContent>
               </Card>
             </div>
