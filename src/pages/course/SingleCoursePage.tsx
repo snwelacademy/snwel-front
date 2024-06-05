@@ -11,14 +11,18 @@ import CourseDescription from '@/components/courses/CourseDescription';
 import EnrollCourseModal from '@/components/courses/EnrollCourseModal';
 import { useQuery } from '@tanstack/react-query';
 import { getCourse } from '@/services/admin/admin-course-service';
+import PageLoader from '@/components/PageLoader';
 
 
 const SingleCoursePage = () => {
     const { slug } = useParams();
-    const {data:course} = useQuery({
+    const {data:course, isLoading} = useQuery({
         queryKey: ["course",slug],
         queryFn: () => getCourse(slug||"")
     })
+    if(isLoading){
+        return <PageLoader/>
+    }
     if (!course) {
         return <PageHeader title='No Course Found!' />
     }
