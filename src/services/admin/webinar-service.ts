@@ -19,7 +19,6 @@ export async function getAllWebinars (options?: ListOptions) {
 }
 export async function createWebinar (mutateWebinar: any) {
     try {
-        
         const res = await protectedApi.post<any, AxiosResponse<ApiResponse<Webinar>>>('/webinar', mutateWebinar);
         const data = res.data.data;
         return data;

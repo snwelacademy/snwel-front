@@ -19,42 +19,26 @@ import MobileNavbar from './MobileNavbar';
 import { useQuery } from '@tanstack/react-query';
 import { getAllCourseCategories } from '@/services/admin/course-category-service';
 import { Menu } from '@/data/menu';
+import EnrollCourseModal from '../courses/EnrollCourseModal';
 
-// const CategoryMenu = ({
-//   menu
-// }: {
-//   menu: Menu[]
-// }) => {
-//   <div className='md:w-[500px] lg:w-[]'>
-//         {
-//            menu.children?.map(m => {
-//             return <Link to={m.link || '#'}>
-//               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-//                 {m.label}
-//               </NavigationMenuLink>
-//             </Link>
-//           })
-//         }
-//         </div>
-// }
 
 const MenuItemChildren = ({
   menu
 }: { menu: Menu }) => {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger><Link to={menu.link||'#'}>{menu.label}</Link></NavigationMenuTrigger>
+      <NavigationMenuTrigger><Link to={menu.link || '#'}>{menu.label}</Link></NavigationMenuTrigger>
       <NavigationMenuContent className="left-0">
-        <div className='w-[500px] grid grid-cols-2 md:grid-cols-2 gap-2 p-2'>
-        {
-          menu.children?.map(m => {
-            return <Link to={m.link || '#'} className='flex w-full' key={nanoid()}>
-              <NavigationMenuLink className={cn([navigationMenuTriggerStyle(), 'block w-full'])}>
-                {m.label}
-              </NavigationMenuLink>
-            </Link>
-          })
-        }
+        <div className='w-[200px] flex flex-col items-center justify-center gap-2 p-2'>
+          {
+            menu.children?.map(m => {
+              return <Link to={m.link || '#'} className='flex w-full' key={nanoid()}>
+                <NavigationMenuLink className={cn([navigationMenuTriggerStyle(), 'block w-full'])}>
+                  {m.label}
+                </NavigationMenuLink>
+              </Link>
+            })
+          }
         </div>
       </NavigationMenuContent>
     </NavigationMenuItem>
@@ -63,14 +47,14 @@ const MenuItemChildren = ({
 
 const SimpleNavlink = ({ menu }: { menu: Menu }) => {
   const [isActive, setIsActive] = useState(false);
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setIsActive(Boolean(menu.link && menu.link === pathname));
-  },[pathname] )
+  }, [pathname])
 
   return (
-    <Link to={menu?.link||'#'} >
+    <Link to={menu?.link || '#'} >
       <NavigationMenuLink className={cn([
         navigationMenuTriggerStyle(),
         {
@@ -101,28 +85,32 @@ const MainNavbar = () => {
         <NavigationMenu>
           <NavigationMenuList>
 
-            <SimpleNavlink menu={{label: "Home", link: "/"}} />
+            <SimpleNavlink menu={{ label: "Home", link: "/" }} />
             <MenuItemChildren menu={{
-              label: "Courses", 
+              label: "Courses",
               link: "/courses",
-              children: categories?.docs.map(ctg => ({label: ctg.title, link: `/courses/?category=${ctg.slug}`}))
-              }} key={nanoid()} />
-            <SimpleNavlink menu={{label: "About", link: "/about"}} />
-            <SimpleNavlink menu={{label: "Contact", link: "/contact"}} />
-            <SimpleNavlink menu={{label: "Blogs", link: "/blogs"}} />
-            <SimpleNavlink menu={{label: "Webinars", link: "/webinars"}} />
+              children: categories?.docs.map(ctg => ({ label: ctg.title, link: `/courses/?category=${ctg.slug}` }))
+            }} key={nanoid()} />
+            <SimpleNavlink menu={{ label: "About", link: "/about" }} />
+            <SimpleNavlink menu={{ label: "Contact", link: "/contact" }} />
+            <SimpleNavlink menu={{ label: "Webinars", link: "/webinars" }} />
+            <SimpleNavlink menu={{ label: "Live Projects", link: "/live-projects" }} />
+            <SimpleNavlink menu={{ label: "Job Vacancy", link: "/job-vacancies" }} />
           </NavigationMenuList>
         </NavigationMenu>
       </div>
 
       <div className='block md:hidden'>
-        <MobileNavbar/>
+        <MobileNavbar />
       </div>
 
       <div className=' items-center gap-3 hidden md:inline-flex'>
-        <Button size={'icon'} variant={'ghost'}><SearchIcon/></Button>
-        <Button size={'icon'} variant={'ghost'}><ShoppingBagIcon/></Button>
-        <Button>GET STARTED</Button>
+        <Button size={'icon'} variant={'ghost'}><SearchIcon /></Button>
+        <Button size={'icon'} variant={'ghost'}><ShoppingBagIcon /></Button>
+        <EnrollCourseModal
+          trigger={<Button className='hero-btn-1' size={'lg'} variant={'destructive'}>Register</Button>}
+          courseId=''
+        />
       </div>
 
     </div>

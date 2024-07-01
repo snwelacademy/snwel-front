@@ -6,7 +6,7 @@ import { HandHeart, HandshakeIcon, HeadsetIcon, Star } from "lucide-react";
 import {constants} from '../config/constants'
 import { Progress } from "@/components/ui/progress"
 import PremiumCourseSection from "@/components/courses/PremiumCourseSection";
-import OurTeamSection from "@/components/shared/OurTeamSection";
+// import OurTeamSection from "@/components/shared/OurTeamSection";
 import JoinCourseSection2 from "@/components/shared/JoinCourseSection2";
 import MarketingFour from "@/components/shared/MarketingFour";
 
@@ -24,6 +24,12 @@ const AboutPage = () => {
             <Typography as="p">Donec laoreet quam in arcu tempor, ut aliquet diam sagittis. Morbi id elit sodales, facilisis enim sollicitudin, pellentesque quam. Donec tempor metus felis, nec egestas ligula convallis a. Duis rutrum, massa non vehicula sodales.</Typography>
           </div>
         </div>
+
+        <section className="py-20">
+        <div className="container mx-auto">
+        <MarketingFour/>
+        </div>
+      </section>
 
         <div className="container mx-auto grid grid-cols-2 lg:grid-cols-4 items-center justify-items-center gap-5 mt-14  ">
           <div className="flex items-center justify-center flex-col gap-5">
@@ -61,12 +67,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-
-      <section className="py-20">
-        <div className="container mx-auto">
-        <MarketingFour/>
-        </div>
-      </section>
 
 
 
@@ -109,7 +109,7 @@ const AboutPage = () => {
 
       <PremiumCourseSection className="bg-background"/>
 
-      <OurTeamSection/>
+      {/* <OurTeamSection/> */}
 
       <JoinCourseSection2/>
     </div>

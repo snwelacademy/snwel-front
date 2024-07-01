@@ -1,0 +1,99 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+} from "@/components/ui/command";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { useQuery } from "@tanstack/react-query";
+import { getAllMasters } from "@/services/admin/admin-master"; // Adjust the import based on your service
+import { Master } from "@/types/master";
+import { nanoid } from "nanoid";
+import { CommandList } from "cmdk";
+
+
+interface DropdownSelectorProps {
+    parentCode?: string; // Optional parent code for filtering
+    onChange: (value: string) => void;
+    value?: string;
+    selectorKey?: keyof Master
+}
+
+export function MasterDropdown({ parentCode, onChange, value, selectorKey = '_id' }: DropdownSelectorProps) {
+    const [open, setOpen] = React.useState(false);
+    const [search, setSearch] = React.useState("");
+
+    const { data, isLoading, error } = useQuery({
+        queryKey: ['/api/masters', parentCode, search],
+        queryFn: () => getAllMasters({ search, filter: parentCode ? { parentCode: parentCode || '' } : [] })
+    });
+    
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error fetching data</div>;
+    return (
+        <div className="relative">
+            <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                    <Button
+                        variant="outline"
+                        role="combobox"
+                        aria-expanded={open}
+                        className="w-[250px] justify-between"
+                    >
+                        {value
+                            ? (data?.docs || []).find((item: Master) => item[selectorKey] === value)?.name
+                            : "Select item..."}
+                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[250px] p-0">
+                    <Command className="w-full">
+                        <CommandInput
+                            placeholder="Search item..."
+                            value={search}
+                            className="w-full"
+                            onChangeCapture={(e) => setSearch(e.currentTarget.value)}
+                        />
+                        <CommandList>
+                            <CommandEmpty>No item found.</CommandEmpty>
+                            <CommandGroup>
+                                {data?.docs?.map((item: Master) => {
+                                    return <CommandItem
+                                        className="cursor-pointer"
+                                        key={nanoid()}
+                                        value={String(item[selectorKey])}
+                                        onSelect={(currentValue) => {
+                                            onChange(currentValue === value ? "" : currentValue);
+                                            setOpen(false);
+                                        }}
+                                    >
+                                        <Check
+                                            className={cn(
+                                                "mr-2 h-4 w-4",
+                                                value === item.name ? "opacity-100" : "opacity-0"
+                                            )}
+                                        />
+                                        {item.name}
+                                    </CommandItem>
+                                })}
+                            </CommandGroup>
+                        </CommandList>
+                    </Command>
+                </PopoverContent>
+            </Popover>
+        </div>
+    );
+}

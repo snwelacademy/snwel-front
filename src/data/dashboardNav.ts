@@ -39,6 +39,36 @@ export const navItems: NavItemWithOptionalChildren[] = [
     label: "weibinar-queries",
   },
   {
+    title: "Widgets",
+    href: "/admin/widgets",
+    icon: "component",
+    label: "widgets",
+  },
+  {
+    title: "General Enq",
+    href: "/admin/general-enquiry",
+    icon: "user",
+    label: "Enquiries",
+  },
+  {
+    title: "Job Vacancy",
+    href: "/admin/job-vacancies",
+    icon: "bag",
+    label: "Job Vacancy",
+  },
+  {
+    title: "Job Category",
+    href: "/admin/job-category",
+    icon: "job_category",
+    label: "Job Vacancy",
+  },
+  {
+    title: "Master",
+    href: "/admin/masters",
+    icon: "job_category",
+    label: "Master",
+  },
+  {
     title: "Settings",
     href: "/admin/settings",
     icon: "kanban",

@@ -1,6 +1,6 @@
 import { Course } from '@/types/Course'
 import Typography from '../typography'
-import { getCurrencySymbol } from '@/lib/utils'
+import { formatToLocalCurrency } from '@/lib/utils'
 import EnrollCourseModal from './EnrollCourseModal'
 import { Button } from '../ui/button'
 
@@ -10,7 +10,7 @@ const CourseInfoSidebar = ({
     course: Course
 }) => {
     return (
-        <div className='shadow p-2 md:p-4 rounded-xl sticky top-10'>
+        <div className='shadow p-2 md:p-4 rounded-xl'>
             <div className='flex items-center gap-2 border-b py-3' >
                 <Typography as="p">Categories: </Typography>
                 <div className='flex flex-wrap '>
@@ -37,7 +37,7 @@ const CourseInfoSidebar = ({
             <div className='flex items-center gap-2 border-b py-3' >
                 <Typography as="p">Price: </Typography>
                 <div className='flex flex-wrap '>
-                    <Typography as="p" className='font-bold text-primary'>{getCurrencySymbol(course.currency)}{course.price}</Typography>
+                    <Typography as="p" className='font-bold text-orange-500 font-mono text-lg'>{formatToLocalCurrency(course.price)}</Typography>
                 </div>
             </div>
 

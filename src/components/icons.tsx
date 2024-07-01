@@ -33,6 +33,15 @@ import {
     User2Icon,
     UserX2Icon,
     X,
+    Component,
+    LayoutGrid,
+    Monitor,
+    UserCheck,
+    Book,
+    DollarSign,
+    Clock4,
+    Briefcase,
+    LocateIcon
   } from "lucide-react";
   
   export type Icon = LucideIcon;
@@ -64,6 +73,15 @@ import {
     sun: SunMedium,
     moon: Moon,
     laptop: Laptop,
+    bag: Briefcase,
+    job_category: LayoutGrid,
+    location: LocateIcon,
+    jobType: Monitor,
+    employeeType: UserCheck,
+    experience: Briefcase,
+    qualification: Book,
+    salary: DollarSign,
+    datePosted: Clock4,
     gitHub: ({ ...props }: LucideProps) => (
       <svg
         aria-hidden="true"
@@ -87,5 +105,6 @@ import {
     enrollments: BookUser,
     webinar: Podcast,
     webinarEnroll: BookUser,
-    category: Shapes
+    category: Shapes,
+    component: Component
   };

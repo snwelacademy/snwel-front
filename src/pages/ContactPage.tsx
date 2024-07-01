@@ -1,4 +1,4 @@
-import ContactForm from "@/components/shared/ContactForm"
+import EnquiryForm from "@/components/forms/EnquiryForm"
 import PageHeader from "@/components/shared/PageHeader"
 import HeadingSubtitle from "@/components/shared/SectionLable"
 import Typography from "@/components/typography"
@@ -15,7 +15,8 @@ const ContactPage = () => {
         <div className="flex-auto ">
           <HeadingSubtitle title="Contact Us" />
           <Typography as="title">We're Here To Provide <br /> <HighlightedText>24X7Support</HighlightedText></Typography>
-          <ContactForm className="bg-primary/5 mt-10"/>
+          {/* <ContactForm className="bg-primary/5 mt-10"/> */}
+          <div className="bg-primary/5 mt-10"><EnquiryForm type={"general"}/></div>
         </div>
 
         <div className="aspect-[3/4] bg-primary rounded-2xl overflow-hidden p-3 lg:p-10 text-primary-foreground space-y-4 max-w-md">

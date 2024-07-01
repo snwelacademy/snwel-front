@@ -6,12 +6,13 @@ import WebinarGridList from '@/components/webinar/WebinarGridList'
 import { getListOptionsFromSearchParams } from '@/lib/utils'
 import { getAllWebinars } from '@/services/admin/webinar-service'
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 const WebinarListingPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const {data, isLoading} = useQuery({
-      queryKey: ['/admin/webinar', searchParams.values], 
+      queryKey: ['/admin/webinar', searchParams.get('search')], 
       queryFn: () => getAllWebinars(getListOptionsFromSearchParams(searchParams))
     })
 
@@ -23,6 +24,10 @@ const WebinarListingPage = () => {
             setSearchParams({})
         }
     }
+
+    useEffect(() => {
+        console.log(searchParams)
+    }, [searchParams])
     return (
         <>
             <div className='relative w-full bg-center bg-cover flex flex-col items-center justify-center  min-h-96 bg-primary/10 text-center space-y-3 px-4'>

@@ -85,9 +85,22 @@ export const listOptionsToUrlSearchParams = (options: ListOptions<Record<string,
   }
   if (options.filter) {
       Object.entries(options.filter).forEach(([key, value]) => {
-          params.append(`${key}`, value.toString());
+          params.append(`${key}`, value?.toString());
       });
   }
 
   return params.toString();
 };
+
+export function formatToLocalCurrency(value: number | string, locale: string = 'en-US', currency: string = 'inr'): string {
+  const numericValue = typeof value === 'string' ? parseFloat(value) : value;
+
+  if (isNaN(numericValue)) {
+      throw new Error('Invalid number value');
+  }
+
+  return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency
+  }).format(numericValue);
+}

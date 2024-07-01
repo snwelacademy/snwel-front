@@ -3,7 +3,7 @@ import { Card } from '../ui/card';
 import { PersonIcon, ClockIcon } from '@radix-ui/react-icons'
 import { BookTextIcon } from 'lucide-react';
 import Typography from '../typography';
-import { getCurrencySymbol } from '@/lib/utils';
+import { formatToLocalCurrency } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
 type CourseCardProps = {
@@ -18,7 +18,6 @@ const CourseCard = ({
     image,
     enrolled,
     courseDuration,
-    currency,
     price,
     slug,
     isPopular,
@@ -34,7 +33,7 @@ const CourseCard = ({
           {/* <img className="w-full" src={image} alt={title} /> */}
           <div className='absolute bottom-0 px-3 py-2 flex items-center gap-3'>
             <Typography as="label" className='inline-block bg-orange-500 text-white p-1 rounded '>
-              {getCurrencySymbol(currency)}{price}
+              {formatToLocalCurrency(price)}
             </Typography>
             {/* <span className='inline-block bg-orange-500 text-white p-1 rounded-full'>
                 {getCurrencySymbol(currency)}{price}

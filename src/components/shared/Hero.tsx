@@ -66,7 +66,7 @@ const Hero = () => {
                                             <div className='space-x-2 space-y-4'>
                                                 <span className='inline-block'>
                                                 <EnrollCourseModal
-                                                trigger={<Button className='hero-btn-1' size={'lg'} variant={'destructive'}>BUY COURSE</Button>}
+                                                trigger={<Button className='hero-btn-1' size={'lg'} variant={'destructive'}>Register</Button>}
                                                 courseId=''
                                                 />
                                                 </span>

@@ -9,7 +9,7 @@ import {
     useReactTable,
   } from "@tanstack/react-table";
   import React from "react";
-  import { Input } from "@/components/ui/input";
+  // import { Input } from "@/components/ui/input";
   import {
     Table,
     TableBody,
@@ -162,14 +162,14 @@ import {
   
     return (
       <>
-        <Input
+        {/* <Input
           placeholder={`Search ${searchKey}...`}
           value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn(searchKey)?.setFilterValue(event.target.value)
           }
           className="w-full md:max-w-sm"
-        />
+        /> */}
         <ScrollArea className="rounded-md border h-[calc(80vh-220px)]">
           <Table className="relative">
             <TableHeader>
