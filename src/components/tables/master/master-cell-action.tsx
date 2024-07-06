@@ -32,7 +32,7 @@ export const CellActionMaster: React.FC<CellActionProps> = ({ data }) => {
     try {
       setLoading(true);
       await deleteMaster(data._id); // Adjust to your delete function
-      await queryClient.invalidateQueries({ queryKey: ['admin/masters'] }); // Adjust query key as necessary
+      await queryClient.invalidateQueries({ queryKey: ['/admin/masters'] }); // Adjust query key as necessary
       toast({ title: "Master record deleted successfully!" });
       setOpen(false);
     } catch (error: any) {
@@ -61,7 +61,7 @@ export const CellActionMaster: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
           <DropdownMenuItem
-            onClick={() => navigate(`/admin/master/${data._id}`)} // Adjust path as necessary
+            onClick={() => navigate(`/admin/masters/${data._id}`)} // Adjust path as necessary
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>

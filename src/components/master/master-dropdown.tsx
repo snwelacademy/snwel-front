@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/popover";
 import { useQuery } from "@tanstack/react-query";
 import { getAllMasters } from "@/services/admin/admin-master"; // Adjust the import based on your service
-import { Master } from "@/types/master";
+import { MASTER_TYPE, Master } from "@/types/master";
 import { nanoid } from "nanoid";
 import { CommandList } from "cmdk";
 
@@ -28,17 +28,26 @@ interface DropdownSelectorProps {
     parentCode?: string; // Optional parent code for filtering
     onChange: (value: string) => void;
     value?: string;
-    selectorKey?: keyof Master
+    selectorKey?: keyof Master,
+    type?: MASTER_TYPE
 }
 
-export function MasterDropdown({ parentCode, onChange, value, selectorKey = '_id' }: DropdownSelectorProps) {
+export function MasterDropdown({ parentCode, onChange, value, selectorKey = '_id', type }: DropdownSelectorProps) {
     const [open, setOpen] = React.useState(false);
     const [search, setSearch] = React.useState("");
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['/api/masters', parentCode, search],
-        queryFn: () => getAllMasters({ search, filter: parentCode ? { parentCode: parentCode || '' } : [] })
+        queryFn: () => getAllMasters({ search, filter: getFilterValue({parentCode, type}) })
     });
+
+
+    const getFilterValue = (data: {parentCode?: string, type?: MASTER_TYPE}) => {
+        const filter: any = {};
+        if(parentCode) filter['parentCode'] = data.parentCode;
+        if(type) filter['type'] = data.type;
+        return filter;
+    }
     
 
     if (isLoading) return <div>Loading...</div>;

@@ -3,6 +3,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ColumnDef } from "@tanstack/react-table";
 import { CellActionMaster } from "./master-cell-action";
 import { Master } from "@/types/master";
+import { Link } from "react-router-dom";
 
 export const MasterColumns: ColumnDef<Master>[] = [
   {
@@ -32,7 +33,13 @@ export const MasterColumns: ColumnDef<Master>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    cell: ({ row }) => row.original.name || '-',
+    cell: ({ row }) => (
+      <>
+      {
+        row.original.parentCode  ? row.original.name : <Link className="font-bold" to={`/admin/masters?parentCode=${row.original.code}`}>{row.original.name}</Link>
+      }
+      </>)
+    
   },
   {
     accessorKey: "parentCode",

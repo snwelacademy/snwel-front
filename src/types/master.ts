@@ -3,6 +3,19 @@
 
 import { z } from 'zod';
 
+export const master_type_array = [
+  'MASTER',
+  'SUB_MASTER'
+] as const;
+
+const master_enum = z.enum(master_type_array);
+
+export type MASTER_TYPE = z.infer<typeof master_enum>
+
+export const MASTER_CODES = {
+  CURRICULUM_TYPE: 'CURRICULUM-TYPE'
+}
+
 // Master schema
 export const createMasterSchema = z.object({
   code: z.string().min(1, "Code is required"),
@@ -11,6 +24,7 @@ export const createMasterSchema = z.object({
   name: z.string().min(1, "Name is required"),
   meta: z.record(z.any()).optional(),
   sequence: z.number().default(0),
+  type: master_enum
 });
 
 export const updateMasterSchema = createMasterSchema.partial();
@@ -28,4 +42,5 @@ export interface Master {
     name: string;
     meta?: Record<string, any>;
     sequence: number;
+    type: MASTER_TYPE;
   }

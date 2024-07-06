@@ -64,7 +64,7 @@ export const navItems: NavItemWithOptionalChildren[] = [
   },
   {
     title: "Master",
-    href: "/admin/masters",
+    href: "/admin/masters?type=MASTER",
     icon: "job_category",
     label: "Master",
   },

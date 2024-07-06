@@ -19,6 +19,7 @@ import JobVacancyListPage from './pages/job-vacancies';
 import SingleJobPage from './pages/job-vacancies/SingJobPage';
 import MasterPage from './pages/admin/master/master-list';
 import CreateNewMasterPage from './pages/admin/master/new-master';
+import UpdateMasterPage from './pages/admin/master/updateMaster';
 const CourseEnrollemntOtp = React.lazy(() => import('./pages/course-enrollment-otp'));
 const CreateNewWidgetPage = React.lazy(() => import('./pages/admin/widgets/createWidget'));
 const GeneralEnquiryPage = React.lazy(() => import('./pages/admin/enquiry/general-enquiry'));
@@ -97,6 +98,7 @@ const router = createBrowserRouter(
         <Route path="job-category/:id" element={<UpdateJobCategoryPage />} />
         <Route path="masters/" element={<MasterPage />} />
         <Route path="masters/new" element={<CreateNewMasterPage/>} />
+        <Route path="masters/:id" element={<UpdateMasterPage/>} />
         <Route path="settings" element={<Settings />} />
       </Route>
 

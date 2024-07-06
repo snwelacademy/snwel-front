@@ -16,9 +16,10 @@ const breadcrumbItems = [{ title: "Masters", link: "/admin/masters" }];
 const MasterPage = () => {
   const [searchParams] = useSearchParams();
   const { data, isLoading } = useQuery({
-    queryKey: ['/admin/masters', searchParams],
+    queryKey: ['/admin/masters', getListOptionsFromSearchParams(searchParams)],
     queryFn: () => getAllMasters(getListOptionsFromSearchParams(searchParams))
   });
+  console.log(getListOptionsFromSearchParams(searchParams))
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">

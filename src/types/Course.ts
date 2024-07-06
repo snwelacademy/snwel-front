@@ -1,5 +1,12 @@
 import { CourseCategory } from ".";
 
+export enum COURSE_STATUS {
+    SAVED = 'SAVED',
+    PUBLISHED = 'PUBLISHED'
+}
+
+
+
 export type Course = {
     _id: string,
     image?: string,
@@ -30,5 +37,6 @@ export type Course = {
         promotionalCardImage?: string,
         iconImage?: string
     },
-    curriculum:{title: string, duration: string} []
+    curriculum:{title: string, duration: string, unit: string, curriculumType?: string, classCount?: string } [],
+    status: COURSE_STATUS
 }

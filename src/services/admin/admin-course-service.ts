@@ -40,6 +40,17 @@ export async function updateCourse (courseId: string, mutateCourse: any) {
         throw new Error("Error in updating course. Please try again")
     }
 }
+export async function changeCourseStatus (courseId: string, status: string) {
+    try {
+        
+        const res = await protectedApi.put<any, AxiosResponse<ApiResponse<Course>>>(`/course/partial-update/${courseId}`, {status});
+        const data = res.data.data;
+        return data;
+    } catch (error) {
+        console.log("Error: changeCourseStatus: ", error);
+        throw new Error("Error in status updating course. Please try again")
+    }
+}
 export async function deleteCourse (courseId: string) {
     try {
         const res = await protectedApi.delete<any, AxiosResponse<ApiResponse<Course>>>(`/course/${courseId}`);

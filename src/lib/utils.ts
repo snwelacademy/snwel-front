@@ -27,7 +27,14 @@ export function getListOptionsFromSearchParams(searchParams: URLSearchParams): L
   const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1;
   const limit = searchParams.get('limit') ? Number(searchParams.get('limit')) : 10;
   const search = searchParams.get('search') || '';
-  return {page, limit, search}
+  const filter: any = {};
+  searchParams.forEach((value, key) => {
+    if(!['page', 'limit', 'search'].includes(key)){
+      filter[key] = value;
+    }
+  })
+  console.log({filter})
+  return {page, limit, search, filter}
 }
 
 function isCompleteUrl(urlString: string): boolean {

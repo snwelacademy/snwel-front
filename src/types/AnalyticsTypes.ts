@@ -79,7 +79,8 @@ export interface ImportantEntitiesCount {
     totalCourses: number;
     totalUsers: number;
     totalRevenue: number;
-    totalEnrollments: number;
+    paidEnrollments: number;
+    allEnrollments: number
 }
 
 export interface RecentSale {

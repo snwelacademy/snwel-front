@@ -5,6 +5,7 @@ import { CellAction } from "./cell-action";
 import { Course } from "@/types";
 import { getCurrencySymbol } from "@/lib/utils";
 import { StarFilledIcon } from "@radix-ui/react-icons";
+import CourseStatusChanger from "@/components/courses/CourseStatusChanger";
 
 export const columns: ColumnDef<Course>[] = [
   {
@@ -56,6 +57,13 @@ export const columns: ColumnDef<Course>[] = [
     header: "PRICE",
     cell: ({row}) => {
         return `${getCurrencySymbol(row.original?.currency||'INR')}${row.original?.price}`
+    }
+  },
+  {
+    accessorKey: "status",
+    header: "STATUS",
+    cell: ({row}) => {
+        return <CourseStatusChanger courseId={row.original._id} status={row.original.status} />
     }
   },
   {

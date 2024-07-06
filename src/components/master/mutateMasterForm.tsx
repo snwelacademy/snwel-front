@@ -11,12 +11,13 @@ import { Button } from '../ui/button';
 import { useToast } from '../ui/use-toast';
 import { Switch } from '../ui/switch';
 import { createMaster, updateMaster } from '@/services/admin/admin-master'; // Adjust to your service
-import { Master, createMasterSchema, updateMasterSchema } from '@/types/master';
+import { MASTER_TYPE, Master, createMasterSchema, master_type_array, updateMasterSchema } from '@/types/master';
 import slugify from 'slugify';
 import { MasterDropdown } from './master-dropdown';
 import { useQueryClient } from '@tanstack/react-query';
+import DropdownSelector from '../DropdownSelector';
 
-const MutateMaster = ({ data }: { data?: Master }) => {
+const MutateMaster = ({ type, data }: { type?: MASTER_TYPE, data?: Master }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { toast } = useToast();
     const form = useForm<z.infer<typeof createMasterSchema>>({
@@ -25,7 +26,8 @@ const MutateMaster = ({ data }: { data?: Master }) => {
             name: '',
             parentCode: '',
             isActive: true,
-            sequence: 0
+            sequence: 0,
+            type: data?.type || type || 'MASTER'
         },
         resolver: zodResolver(createMasterSchema)
     });
@@ -40,7 +42,7 @@ const MutateMaster = ({ data }: { data?: Master }) => {
             } else {
                 await createMaster(value as z.infer<typeof createMasterSchema>);
             }
-            client.invalidateQueries({queryKey: ['/api/masters']})
+            client.invalidateQueries({ queryKey: ['/api/masters'] })
             toast({ title: `Master ${data ? 'Updated' : 'Created'} Successfully!` });
         } catch (error: any) {
             toast({ title: `Error: ${error.message}` });
@@ -99,19 +101,33 @@ const MutateMaster = ({ data }: { data?: Master }) => {
                                             </FormItem>
                                         )}
                                     />
-                                    <FormField
-                                        
+                                    <FormItem className='w-full'>
+                                        <FormLabel>Type</FormLabel>
+                                        <FormControl>
+                                            <DropdownSelector
+                                                name="type"
+                                                items={master_type_array.map(t => ({label: t, value: t}))}
+                                                placeholder='Select Master Type'
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+
+                                    {
+                                        Watch.type === 'SUB_MASTER' &&
+                                        <FormField
                                         name="parentCode"
                                         render={({ field }) => (
-                                            <FormItem className='w-full'>
-                                                <FormLabel>Parent Code</FormLabel>
+                                            <FormItem className='w-full' >
+                                                <FormLabel>Master Code</FormLabel>
                                                 <FormControl>
-                                                   <MasterDropdown {...field} selectorKey='code' />
+                                                    <MasterDropdown {...field} selectorKey='code' type={'MASTER'} />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
                                         )}
                                     />
+                                    }
                                     {/* <FormField
                                         control={form.control}
                                         name="sequence"

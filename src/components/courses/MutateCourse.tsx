@@ -20,6 +20,10 @@ import { createCourse, updateCourse } from '@/services/admin/admin-course-servic
 import { AfterCourseCreatedModal } from '../modal/AfterCourseCreated'
 import CategorySelectorFormElement from '../course-category/CategorySelector'
 import TimeUnitSelector from '../TimeUnitSelector'
+import { MasterDropdown } from '../master/master-dropdown'
+import { MASTER_CODES } from '@/types/master'
+import { PlusIcon } from '@radix-ui/react-icons'
+import { Clock10, Notebook } from 'lucide-react'
 
 const createCourseSchema = z.object({
     image: z.string().optional(),
@@ -43,7 +47,13 @@ const createCourseSchema = z.object({
         promotionalCardImage: z.string().optional(),
         iconImage: z.string().optional()
     }).optional(),
-    curriculum: z.array(z.object({ title: z.string(), duration: z.string(), unit: z.string().optional() })).default([])
+    curriculum: z.array(z.object({
+        title: z.string(),
+        duration: z.string(),
+        unit: z.string().optional(),
+        curriculumType: z.string().optional(),
+        classCount: z.string().optional()
+    })).default([])
 })
 
 
@@ -373,56 +383,88 @@ const MutateCourse = ({ courseData }: { courseData?: Course }) => {
                                     {fields.map((field, index) => (
                                         <div className='flex items-center gap-5'>
                                             <FormField
-                                            control={form.control}
-                                            key={field.id}
-                                            name={`curriculum.${index}.title`}
-                                            render={({ field }) => (
-                                                <FormItem className='flex flex-grow'>
-                                                   
-                                                    <FormControl>
-                                                        <Input placeholder='Title' {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            key={field.id}
-                                            name={`curriculum.${index}.duration`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    
-                                                    <FormControl>
-                                                        <Input  placeholder='Duration' type='number' {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            key={field.id}
-                                            name={`curriculum.${index}.unit`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    
-                                                    <FormControl>
-                                                       <TimeUnitSelector {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+                                                control={form.control}
+                                                key={field.id}
+                                                name={`curriculum.${index}.title`}
+                                                render={({ field }) => (
+                                                    <FormItem className='flex flex-grow'>
+
+                                                        <FormControl>
+                                                            <Input placeholder='Title' prefix={"Pre"} {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                            <FormField
+                                                control={form.control}
+                                                key={field.id}
+                                                name={`curriculum.${index}.curriculumType`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormControl>
+                                                            <MasterDropdown type={"SUB_MASTER"} parentCode={MASTER_CODES.CURRICULUM_TYPE} selectorKey='_id' {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                            <FormField
+                                                control={form.control}
+                                                key={field.id}
+                                                name={`curriculum.${index}.classCount`}
+                                                render={({ field }) => (
+                                                    <FormItem className='relative'>
+                                                        <FormControl className='relative'>
+                                                            <Input className='pr-8' placeholder='Classes' type='number' {...field}/>
+                                                        </FormControl>
+                                                            <Notebook className="absolute right-2 top-1 h-4 w-4 text-muted-foreground"/>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                            <FormField
+                                                control={form.control}
+                                                key={field.id}
+                                                name={`curriculum.${index}.duration`}
+                                                render={({ field }) => (
+                                                    <FormItem className='relative'>
+
+                                                        <FormControl>
+                                                            <Input placeholder='Duration' type='number' className='pr-8' {...field}  />
+                                                        </FormControl>
+                                                        <Clock10 className="absolute right-2 top-1 h-4 w-4 text-muted-foreground"/>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                key={field.id}
+                                                name={`curriculum.${index}.unit`}
+                                                render={({ field }) => (
+                                                    <FormItem>
+
+                                                        <FormControl>
+                                                            <TimeUnitSelector {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
                                         </div>
                                     ))}
                                     <Button
                                         type="button"
                                         variant="outline"
                                         size="sm"
-                                        className="mt-2"
-                                        onClick={() => append({ title: "", duration: "0" })}
+                                        className="mt-2 border-dashed border-spacing-3 w-full"
+                                        onClick={() => append({ title: "", duration: "0", classCount: '0' })}
                                     >
+                                        <PlusIcon className='mr-2'/>
                                         Add Curriculum
                                     </Button>
                                 </div>
